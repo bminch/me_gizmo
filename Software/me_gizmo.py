@@ -1,0 +1,692 @@
+import copy
+import serial
+import serial.tools.list_ports as list_ports
+import string, array
+
+class me_gizmo:
+
+    MCLK_FREQ = 19.6608E6
+
+    VREF = 2.5
+
+    GAINS = (1. / 3., 1., 2., 4., 8., 16., 32., 64.)
+    nominal_adc_slopes = [VREF / GAINS[0] / 2 ** 23, 
+                          VREF / GAINS[1] / 2 ** 23, 
+                          VREF / GAINS[2] / 2 ** 23, 
+                          VREF / GAINS[3] / 2 ** 23, 
+                          VREF / GAINS[4] / 2 ** 23, 
+                          VREF / GAINS[5] / 2 ** 23, 
+                          VREF / GAINS[6] / 2 ** 23, 
+                          VREF / GAINS[7] / 2 ** 23]
+    nominal_adc_offsets = [0., 0., 0., 0., 0., 0., 0., 0.]
+
+    nominal_dacA_slope = 2 ** 12 / VREF
+    nominal_dacA_offset = 0.
+
+    nominal_dacB_slope = 2 ** 12 / VREF
+    nominal_dacB_offset = 0.
+
+    nominal_diff_slope = 2 ** 12 / VREF
+    nominal_diff_offset = 0.
+
+    def __init__(self, port = ''):
+        self.nominal_calib_values()
+
+        # MCP3562R ADC register address definitions (see Table 8-1 on p. 89 of the MCP3561/2/4R datasheet)
+        self.ADCDATA = 0    # Latest ADC conversion data output value (3 or 4 bytes depending on DATA_FORMAT[1:0])
+        self.CONFIG0 = 1    # ADC operating mode, Master clock mode and input bias current source mode (1 byte)
+        self.CONFIG1 = 2    # Prescale and OSR settings (1 byte)
+        self.CONFIG2 = 3    # ADC boost and gain settings, auto-zeroing settings for analog mux, voltage regerence and ADC (1 byte)
+        self.CONFIG3 = 4    # Conversion mode, data and CRC format settings, enable for CRC on communications, enable for digital offset and gain calibrations (1 byte)
+        self.IRQ = 5        # IRQ status bits and mode settings, enable for fast commands and for conversion start pulse (1 byte)
+        self.MUX = 6        # Analog mux input selection (1 byte)
+        self.SCAN = 7       # SCAN mode settings (3 bytes)
+        self.TIMER = 8      # Delay value for TIMER between SCAN cycles (3 bytes)
+        self.OFFSETCAL = 9  # ADC digital offset calibration value (3 bytes)
+        self.GAINCAL = 10   # ADC digital gain calibration value (3 bytes)
+        self.RESERVED1 = 11 # Reserved (3 bytes)
+        self.RESERVED2 = 12 # Reserved (1 byte)
+        self.LOCK = 13      # Password value for SPI write mode locking (1 byte)
+        self.RESERVED3 = 14 # Reserved (2 bytes)
+        self.CRCCFG = 15    # CRC checksum for device configuration (2 bytes)
+
+        # MCP3562R ADC fast command definitions (see Table 6-2 on p. 68 of the MCP3561/2/4R datasheet)
+        self.START_CONV = 10
+        self.STANDBY = 11
+        self.SHUTDOWN = 12
+        self.FULL_SHUTDOWN = 13
+        self.FULL_RESET = 14
+
+        # MCP3562R ADC input multiplexer register values (see Secion 8.7 on p. 96 of the MCP3561/2/4R datasheet)
+        self.MUX_VREF = 0xB8        # VIN+ = REFIN+/OUT, VIN- = AGND
+        self.MUX_NEG_VREF = 0x8B    # VIN+ = AGND, VIN- = REFIN+/OUT
+        self.MUX_CALIB = 0x13       # VIN+ = CH1/DACA, VIN- = CH3/DACB
+        self.MUX_CH0_SE = 0x08      # VIN+ = CH0, VIN- = AGND
+        self.MUX_CH1_SE = 0x18      # VIN+ = CH1/DACA, VIN- = AGND
+        self.MUX_CH2_SE = 0x28      # VIN+ = CH2, VIN- = AGND
+        self.MUX_CH3_SE = 0x38      # VIN+ = CH3/DACB, VIN- = AGND
+        self.MUX_CHA_DIFF = 0x01    # VIN+ = CH0, VIN- = CH1/DACA
+        self.MUX_CHB_DIFF = 0x23    # VIN+ = CH2, VIN- = CH3/DACB
+
+        self.adc_gain = 1
+
+        if port == '':
+            self.dev = None
+            self.connected = False
+            devices = list_ports.comports()
+            for device in devices:
+                if device.vid == 0x2E8A and device.pid == 0xF00A:
+                    try:
+                        self.dev = serial.Serial(device.device, 115200)
+                        self.connected = True
+                        print(f'Connected to {device.device}...')
+                    except:
+                        pass
+                if self.connected:
+                    break
+        else:
+            try:
+                self.dev = serial.Serial(port)
+                self.connected = True
+            except:
+                self.dev = None
+                self.connected = False
+
+        if self.connected:
+            self.write('')
+            self.adc_gain = self.adc_get_gain()
+            self.read_calib_values()
+
+    def write(self, command):
+        if not self.connected:
+            return
+        self.dev.write(f'{command}\r'.encode())
+
+    def read(self):
+        if not self.connected:
+            return
+        return self.dev.readline().decode()
+
+#
+# UI methods
+#
+
+    def toggle_led(self):
+        if not self.connected:
+            return
+        self.write('UI:LED TOGGLE')
+
+    def set_led(self, val):
+        if not self.connected:
+            return
+        self.write(f'UI:LED {int(val) & 0xFFFF:X}')
+
+    def get_led(self):
+        if not self.connected:
+            return
+        self.write('UI:LED?')
+        return int(self.read(), 16)
+
+    def blink_get_interval(self):
+        if not self.connected:
+            return
+        self.write('UI:BLINK:INTERVAL?')
+        return int(self.read(), 16)
+
+    def blink_set_interval(self, val):
+        if not self.connected:
+            return
+        self.write(f'UI:BLINK:INTERVAL {int(val) & 0xFFFF:X}')
+
+    def blink_start(self):
+        if not self.connected:
+            return
+        self.write('UI:BLINK:START')
+
+    def blink_stop(self):
+        if not self.connected:
+            return
+        self.write('UI:BLINK:STOP')
+
+    def read_bootsel(self):
+        if not self.connected:
+            return
+        self.write('UI:BOOTSEL?')
+        return int(self.read(), 16)
+
+#
+# ADC Methods
+#
+
+    def adc_cmd(self, command, address = 1):
+        if not self.connected:
+            return
+        self.write(f'ADC:CMD {int(address) & 0xFF:X},{int(command) & 0xFF:X}')
+
+    def adc_read_reg(self, reg, num_bytes = 1, address = 1):
+        if not self.connected:
+            return
+        self.write(f'ADC:RD_REG {int(address) & 0xFF:X},{int(reg) & 0xFF:X},{int(num_bytes) & 0xFF:X}')
+        vals = [int(val, 16) for val in self.read().split(',')]
+        if len(vals) == 1:
+            return vals[0]
+        else:
+            return vals
+
+    def adc_write_reg(self, reg, vals, address = 1):
+        if not self.connected:
+            return
+        self.write(f'ADC:WR_REG {int(address) & 0xFF:X},{int(reg) & 0xFF:X},' + ','.join([f'{int(val) & 0xFF:X}' for val in vals]))
+
+    def adc_get_irq(self):
+        if not self.connected:
+            return
+        self.write('ADC:IRQ?')
+        return int(self.read(), 16)
+
+    def adc_get_azmux(self, address = 1):
+        if not self.connected:
+            return
+        self.write(f'ADC:AZMUX? {int(address) & 0xFF:X}')
+        return int(self.read(), 16)
+
+    def adc_set_azmux(self, val = 1, address = 1):
+        if not self.connected:
+            return
+        self.write(f'ADC:AZMUX {int(address) & 0xFF:X},{int(val) & 0xFF:X}')
+
+    def adc_get_enoffcal(self, address = 1):
+        if not self.connected:
+            return
+        self.write(f'ADC:ENOFFCAL? {int(address) & 0xFF:X}')
+        return int(self.read(), 16)
+
+    def adc_set_enoffcal(self, val = 0, address = 1):
+        if not self.connected:
+            return
+        self.write(f'ADC:ENOFFCAL {int(address) & 0xFF:X},{int(val) & 0xFF:X}')
+
+    def adc_get_engaincal(self, address = 1):
+        if not self.connected:
+            return
+        self.write(f'ADC:ENGAINCAL? {int(address) & 0xFF:X}')
+        return int(self.read(), 16)
+
+    def adc_set_engaincal(self, val = 0, address = 1):
+        if not self.connected:
+            return
+        self.write(f'ADC:ENGAINCAL {int(address) & 0xFF:X},{int(val) & 0xFF:X}')
+
+    def adc_get_osr(self, address = 1):
+        if not self.connected:
+            return
+        self.write(f'ADC:OSR? {int(address) & 0xFF:X}')
+        return int(self.read(), 16)
+
+    def adc_set_osr(self, val = 3, address = 1):
+        if not self.connected:
+            return
+        self.write(f'ADC:OSR {int(address) & 0xFF:X},{int(val) & 0xFF:X}')
+
+    def adc_get_gain(self, address = 1):
+        if not self.connected:
+            return
+        self.write(f'ADC:GAIN? {int(address) & 0xFF:X}')
+        return int(self.read(), 16)
+
+    def adc_set_gain(self, val = 1, address = 1):
+        if not self.connected:
+            return
+        self.write(f'ADC:GAIN {int(address) & 0xFF:X},{int(val) & 0xFF:X}')
+        self.adc_gain = self.adc_get_gain()
+
+    def adc_get_data(self, address = 1):
+        if not self.connected:
+            return
+        self.write(f'ADC:DATA? {int(address) & 0xFF:X}')
+        val = int(self.read(), 16)
+        if val > 2147483647:
+            val = val - 4294967296
+        return val
+
+    def adc_scan_get_list(self, address = 1):
+        if not self.connected:
+            return
+        self.write(f'ADC:SCAN:LIST? {int(address) & 0xFF:X}')
+        return int(self.read(), 16)
+
+    def adc_scan_set_list(self, val = 0, address = 1):
+        if not self.connected:
+            return
+        self.write(f'ADC:SCAN:LIST {int(address) & 0xFF:X},{int(val) & 0xFFFF:X}')
+
+    def adc_scan_get_delay(self, address = 1):
+        if not self.connected:
+            return
+        self.write(f'ADC:SCAN:DELAY? {int(address) & 0xFF:X}')
+        return int(self.read(), 16)
+
+    def adc_scan_set_delay(self, val = 0, address = 1):
+        if not self.connected:
+            return
+        self.write(f'ADC:SCAN:DELAY {int(address) & 0xFF:X},{int(val) & 0xFF:X}')
+
+    def adc_scan_once(self, address = 1):
+        if not self.connected:
+            return
+        self.write(f'ADC:SCAN? {int(address) & 0xFF:X}')
+        vals = [int(val, 16) for val in self.read().split(',')]
+        vals = [val - 4294967296 if val > 2147483647 else val for val in vals]
+        if len(vals) == 1:
+            return vals[0]
+        else:
+            return vals
+
+    def adc_stream_get_interval(self):
+        if not self.connected:
+            return
+        self.write('ADC:STREAM:INTERVAL?')
+        return int(self.read(), 16)
+
+    def adc_stream_set_interval(self, val):
+        if not self.connected:
+            return
+        self.write(f'ADC:STREAM:INTERVAL {int(val) & 0xFFFF:X}')
+
+    def adc_stream_start(self):
+        if not self.connected:
+            return
+        self.write('ADC:STREAM:START')
+
+    def adc_stream_stop(self):
+        if not self.connected:
+            return
+        self.write('ADC:STREAM:STOP')
+
+    def adc_get_voltage(self, address = 1):
+        if not self.connected:
+            return
+        value = self.adc_get_data(address)
+        return self.adc_slopes[self.adc_gain] * (value + self.adc_offsets[self.adc_gain])
+
+    def adc_get_data_avg(self, num_avg = 10, address = 1):
+        if not self.connected:
+            return
+        total = 0
+        for i in range(num_avg):
+            total += self.adc_get_data(address)
+        return total / num_avg
+
+    def adc_get_voltage_avg(self, num_avg = 10, address = 1):
+        if not self.connected:
+            return
+        total = 0
+        for i in range(num_avg):
+            total += self.adc_get_data(address)
+        value = total / num_avg
+        return self.adc_slopes[self.adc_gain] * (value + self.adc_offsets[self.adc_gain])
+
+#
+# DAC methods
+#
+
+    def dacA_set_value(self, value):
+        if not self.connected:
+            return
+        self.write(f'DAC:DACA:VALUE {int(value) & 0x0FFF:X}')
+
+    def dacA_get_value(self):
+        if not self.connected:
+            return
+        self.write('DAC:DACA:VALUE?')
+        return int(self.read(), 16)
+
+    def dacA_set_ena(self, value):
+        if not self.connected:
+            return
+        self.write(f'DAC:DACA:ENA {int(value) & 0xFF:X}')
+
+    def dacA_get_ena(self):
+        if not self.connected:
+            return
+        self.write('DAC:DACA:ENA?')
+        return int(self.read(), 16)
+
+    def dacB_set_value(self, value):
+        if not self.connected:
+            return
+        self.write(f'DAC:DACB:VALUE {int(value) & 0x0FFF:X}')
+
+    def dacB_get_value(self):
+        if not self.connected:
+            return
+        self.write('DAC:DACB:VALUE?')
+        return int(self.read(), 16)
+
+    def dacB_set_ena(self, value):
+        if not self.connected:
+            return
+        self.write(f'DAC:DACB:ENA {int(value) & 0xFF:X}')
+
+    def dacB_get_ena(self):
+        if not self.connected:
+            return
+        self.write('DAC:DACB:ENA?')
+        return int(self.read(), 16)
+
+    def dac_diff_set_value(self, value):
+        if not self.connected:
+            return
+        if not (-4095 <= value <= 4095):
+            return
+        value = value if value >= 0 else value + 65536
+        self.write(f'DAC:DIFF:VALUE {int(value):X}')
+
+    def dac_diff_get_value(self):
+        if not self.connected:
+            return
+        self.write('DAC:DIFF:VALUE?')
+        value = int(self.read(), 16)
+        return value if value < 32768 else value - 65536
+
+    def dac_diff_set_ena(self, value):
+        if not self.connected:
+            return
+        self.write(f'DAC:DIFF:ENA {int(value) & 0xFF:X}')
+
+    def dac_diff_get_ena(self):
+        if not self.connected:
+            return
+        self.write('DAC:DIFF:ENA?')
+        return int(self.read(), 16)
+
+    def dacA_set_voltage(self, voltage):
+        if not self.connected:
+            return
+        value = int(round(voltage * self.dacA_slope + self.dacA_offset))
+        value = value if value >= 0 else 0
+        value = value if value <= 4095 else 4095
+        self.dacA_set_value(value)
+
+    def dacA_get_voltage(self):
+        if not self.connected:
+            return
+        value = self.dacA_get_value()
+        return (value - self.dacA_offset) / self.dacA_slope
+
+    def dacB_set_voltage(self, voltage):
+        if not self.connected:
+            return
+        value = int(round(voltage * self.dacB_slope + self.dacB_offset))
+        value = value if value >= 0 else 0
+        value = value if value <= 4095 else 4095
+        self.dacB_set_value(value)
+
+    def dacB_get_voltage(self):
+        if not self.connected:
+            return
+        value = self.dacB_get_value()
+        return (value - self.dacB_offset) / self.dacB_slope
+
+    def dac_diff_set_voltage(self, voltage):
+        if not self.connected:
+            return
+        value = int(round(voltage * self.diff_slope + self.diff_offset))
+        value = value if value >= -4095 else -4095
+        value = value if value <= 4095 else 4095
+        self.dac_diff_set_value(value)
+
+    def dac_diff_get_voltage(self):
+        if not self.connected:
+            return
+        value = self.dac_diff_get_value()
+        return (value - self.diff_offset) / self.diff_slope
+
+#
+# EEPROM methods
+#
+
+    def eeprom_read(self, address, num_bytes):
+        if not self.connected:
+            return
+        self.write(f'EEPROM:READ {int(address) & 0xFFFF:X},{int(num_bytes) & 0xFFFF:X}')
+        values = [int(value, 16) for value in self.read().split(',')]
+        if len(values) == 1:
+            return values[0]
+        else:
+            return values
+
+    def eeprom_write(self, address, values):
+        if not self.connected:
+            return
+        self.write(f'EEPROM:WRITE {int(address) & 0xFFFF:X},' + ','.join([f'{int(value) & 0xFF:X}' for value in values]))
+
+    def eeprom_commit(self):
+        if not self.connected:
+            return
+        self.write('EEPROM:COMMIT')
+
+    def eeprom_length(self):
+        if not self.connected:
+            return
+        self.write('EEPROM:LENGTH?')
+        return int(self.read(), 16)
+
+    def eeprom_erase(self):
+        if not self.connected:
+            return
+        self.write('EEPROM:ERASE')
+
+    def write_serial_number(self, serial_number):
+        if not self.connected:
+            return
+
+        length = len(serial_number)
+        if length == 0 or length > 254:
+            return
+
+        vals = [length] + list(serial_number.encode()) + [0xFF] * (255 - length)
+        self.eeprom_write(0, vals[:128])
+        self.eeprom_write(128, vals[128:])
+        self.eeprom_commit()
+
+    def read_serial_number(self):
+        if not self.connected:
+            return
+        self.write('*IDN?')
+        return self.read().strip()
+
+    def nominal_calib_values(self):
+        self.adc_slopes = copy.deepcopy(me_gizmo.nominal_adc_slopes)
+        self.adc_offsets = copy.deepcopy(me_gizmo.nominal_adc_offsets)
+
+        self.dacA_slope = copy.deepcopy(me_gizmo.nominal_dacA_slope)
+        self.dacA_offset = copy.deepcopy(me_gizmo.nominal_dacA_offset)
+
+        self.dacB_slope = copy.deepcopy(me_gizmo.nominal_dacB_slope)
+        self.dacB_offset = copy.deepcopy(me_gizmo.nominal_dacB_offset)
+
+        self.diff_slope = copy.deepcopy(me_gizmo.nominal_diff_slope)
+        self.diff_offset = copy.deepcopy(me_gizmo.nominal_diff_offset)
+
+    def float_to_vals(self, x):
+        if x < 0.:
+            x_sign = 1
+            x = -x
+        else:
+            x_sign = 0
+        x_int = int(x)
+        x_frac = x - int(x)
+        val1 = x_int & 0x7FFFFF
+        val1 = val1 | 0x800000 if x_sign else val1
+        val2 = int(x_frac * (2 ** 24))
+        return (val1, val2)
+
+    def vals_to_float(self, val1, val2):
+        x_int = val1 & 0x7FFFFF
+        x_sign = -1. if val1 & 0x800000 else 1.
+        x_frac = val2 / 2 ** 24
+        x = x_int + x_frac
+        return x_sign * x
+
+    def write_calib_values(self):
+        if not self.connected:
+            return
+
+        calib_values = []
+
+        for i in range(8):
+            slope_val = int(round(2 ** 23 * self.adc_slopes[i] / me_gizmo.nominal_adc_slopes[i]))
+            calib_values.extend([slope_val & 0xFF, (slope_val >> 8) & 0xFF, slope_val >> 16])
+
+            offset_vals = self.float_to_vals(self.adc_offsets[i])
+            calib_values.extend([offset_vals[0] & 0xFF, (offset_vals[0] >> 8) & 0xFF, offset_vals[0] >> 16])
+            calib_values.extend([offset_vals[1] & 0xFF, (offset_vals[1] >> 8) & 0xFF, offset_vals[1] >> 16])
+
+        slope_val = int(round(2 ** 23 * self.dacA_slope / me_gizmo.nominal_dacA_slope))
+        calib_values.extend([slope_val & 0xFF, (slope_val >> 8) & 0xFF, slope_val >> 16])
+
+        offset_vals = self.float_to_vals(self.dacA_offset)
+        calib_values.extend([offset_vals[0] & 0xFF, (offset_vals[0] >> 8) & 0xFF, offset_vals[0] >> 16])
+        calib_values.extend([offset_vals[1] & 0xFF, (offset_vals[1] >> 8) & 0xFF, offset_vals[1] >> 16])
+
+        slope_val = int(round(2 ** 23 * self.dacB_slope / me_gizmo.nominal_dacB_slope))
+        calib_values.extend([slope_val & 0xFF, (slope_val >> 8) & 0xFF, slope_val >> 16])
+
+        offset_vals = self.float_to_vals(self.dacB_offset)
+        calib_values.extend([offset_vals[0] & 0xFF, (offset_vals[0] >> 8) & 0xFF, offset_vals[0] >> 16])
+        calib_values.extend([offset_vals[1] & 0xFF, (offset_vals[1] >> 8) & 0xFF, offset_vals[1] >> 16])
+
+        slope_val = int(round(2 ** 23 * self.diff_slope / me_gizmo.nominal_diff_slope))
+        calib_values.extend([slope_val & 0xFF, (slope_val >> 8) & 0xFF, slope_val >> 16])
+
+        offset_vals = self.float_to_vals(self.diff_offset)
+        calib_values.extend([offset_vals[0] & 0xFF, (offset_vals[0] >> 8) & 0xFF, offset_vals[0] >> 16])
+        calib_values.extend([offset_vals[1] & 0xFF, (offset_vals[1] >> 8) & 0xFF, offset_vals[1] >> 16])
+
+        self.eeprom_write(256, calib_values)
+        self.eeprom_commit()
+
+    def read_calib_values(self):
+        if not self.connected:
+            return
+
+        calib_values = self.eeprom_read(256, 99)
+
+        if len(calib_values) != 99:
+            return
+
+        if all([val == 0xFF for val in calib_values]):
+            return
+
+        for i in range(8):
+            slope_val = calib_values[9 * i] | (calib_values[9 * i + 1] << 8) | (calib_values[9 * i + 2] << 16)
+            slope_val = slope_val / 2 ** 23
+            self.adc_slopes[i] = slope_val * me_gizmo.nominal_adc_slopes[i]
+
+            offset_val1 = calib_values[9 * i + 3] | (calib_values[9 * i + 4] << 8) | (calib_values[9 * i + 5] << 16)
+            offset_val2 = calib_values[9 * i + 6] | (calib_values[9 * i + 7] << 8) | (calib_values[9 * i + 8] << 16)
+            self.adc_offsets[i] = self.vals_to_float(offset_val1, offset_val2)
+
+        i = 8
+        slope_val = calib_values[9 * i] | (calib_values[9 * i + 1] << 8) | (calib_values[9 * i + 2] << 16)
+        slope_val = slope_val / 2 ** 23
+        self.dacA_slope = slope_val * me_gizmo.nominal_dacA_slope
+
+        offset_val1 = calib_values[9 * i + 3] | (calib_values[9 * i + 4] << 8) | (calib_values[9 * i + 5] << 16)
+        offset_val2 = calib_values[9 * i + 6] | (calib_values[9 * i + 7] << 8) | (calib_values[9 * i + 8] << 16)
+        self.dacA_offset = self.vals_to_float(offset_val1, offset_val2)
+
+        i = 9
+        slope_val = calib_values[9 * i] | (calib_values[9 * i + 1] << 8) | (calib_values[9 * i + 2] << 16)
+        slope_val = slope_val / 2 ** 23
+        self.dacB_slope = slope_val * me_gizmo.nominal_dacB_slope
+
+        offset_val1 = calib_values[9 * i + 3] | (calib_values[9 * i + 4] << 8) | (calib_values[9 * i + 5] << 16)
+        offset_val2 = calib_values[9 * i + 6] | (calib_values[9 * i + 7] << 8) | (calib_values[9 * i + 8] << 16)
+        self.dacB_offset = self.vals_to_float(offset_val1, offset_val2)
+
+        i = 10
+        slope_val = calib_values[9 * i] | (calib_values[9 * i + 1] << 8) | (calib_values[9 * i + 2] << 16)
+        slope_val = slope_val / 2 ** 23
+        self.diff_slope = slope_val * me_gizmo.nominal_diff_slope
+
+        offset_val1 = calib_values[9 * i + 3] | (calib_values[9 * i + 4] << 8) | (calib_values[9 * i + 5] << 16)
+        offset_val2 = calib_values[9 * i + 6] | (calib_values[9 * i + 7] << 8) | (calib_values[9 * i + 8] << 16)
+        self.diff_offset = self.vals_to_float(offset_val1, offset_val2)
+
+    def save_calib_values(self, filename):
+        file = open(filename, 'w')
+
+        for i in range(8):
+            slope_val = int(round(2 ** 23 * self.adc_slopes[i] / me_gizmo.nominal_adc_slopes[i]))
+            file.write(f'{slope_val:06X}\n')
+
+            offset_vals = self.float_to_vals(self.adc_offsets[i])
+            file.write(f'{offset_vals[0]:06X}\n')
+            file.write(f'{offset_vals[1]:06X}\n')
+
+        slope_val = int(round(2 ** 23 * self.dacA_slope / me_gizmo.nominal_dacA_slope))
+        file.write(f'{slope_val:06X}\n')
+
+        offset_vals = self.float_to_vals(self.dacA_offset)
+        file.write(f'{offset_vals[0]:06X}\n')
+        file.write(f'{offset_vals[1]:06X}\n')
+
+        slope_val = int(round(2 ** 23 * self.dacB_slope / me_gizmo.nominal_dacB_slope))
+        file.write(f'{slope_val:06X}\n')
+
+        offset_vals = self.float_to_vals(self.dacB_offset)
+        file.write(f'{offset_vals[0]:06X}\n')
+        file.write(f'{offset_vals[1]:06X}\n')
+
+        slope_val = int(round(2 ** 23 * self.diff_slope / me_gizmo.nominal_diff_slope))
+        file.write(f'{slope_val:06X}\n')
+
+        offset_vals = self.float_to_vals(self.diff_offset)
+        file.write(f'{offset_vals[0]:06X}\n')
+        file.write(f'{offset_vals[1]:06X}\n')
+
+        file.close()
+
+    def load_calib_values(self, filename):
+        try:
+            file = open(filename, 'r')
+        except FileNotFoundError:
+            return
+
+        for i in range(8):
+            slope_val = int(file.readline().strip(), 16)
+            slope_val = slope_val / 2 ** 23
+            self.adc_slopes[i] = slope_val * me_gizmo.nominal_adc_slopes[i]
+
+            offset_val1 = int(file.readline().strip(), 16)
+            offset_val2 = int(file.readline().strip(), 16)
+            self.adc_offsets[i] = self.vals_to_float(offset_val1, offset_val2)
+
+        slope_val = int(file.readline().strip(), 16)
+        slope_val = slope_val / 2 ** 23
+        self.dacA_slope = slope_val * me_gizmo.nominal_dacA_slope
+
+        offset_val1 = int(file.readline().strip(), 16)
+        offset_val2 = int(file.readline().strip(), 16)
+        self.dacA_offset = self.vals_to_float(offset_val1, offset_val2)
+
+        slope_val = int(file.readline().strip(), 16)
+        slope_val = slope_val / 2 ** 23
+        self.dacB_slope = slope_val * me_gizmo.nominal_dacB_slope
+
+        offset_val1 = int(file.readline().strip(), 16)
+        offset_val2 = int(file.readline().strip(), 16)
+        self.dacB_offset = self.vals_to_float(offset_val1, offset_val2)
+
+        slope_val = int(file.readline().strip(), 16)
+        slope_val = slope_val / 2 ** 23
+        self.diff_slope = slope_val * me_gizmo.nominal_diff_slope
+
+        offset_val1 = int(file.readline().strip(), 16)
+        offset_val2 = int(file.readline().strip(), 16)
+        self.diff_offset = self.vals_to_float(offset_val1, offset_val2)
+
+        file.close()
+
