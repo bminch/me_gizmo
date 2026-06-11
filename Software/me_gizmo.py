@@ -26,13 +26,22 @@ class me_gizmo:
     nominal_dacB_slope = 2 ** 12 / VREF
     nominal_dacB_offset = 0.
 
-    nominal_diff_slope = 2 ** 12 / VREF
-    nominal_diff_offset = 0.
+    nominal_dacC_slope = 2 ** 12 / VREF
+    nominal_dacC_offset = 0.
+
+    nominal_dacD_slope = 2 ** 12 / VREF
+    nominal_dacD_offset = 0.
+
+    nominal_diffAB_slope = 2 ** 12 / VREF
+    nominal_diffAB_offset = 0.
+
+    nominal_diffCD_slope = 2 ** 12 / VREF
+    nominal_diffCD_offset = 0.
 
     def __init__(self, port = ''):
         self.nominal_calib_values()
 
-        # MCP3562R ADC register address definitions (see Table 8-1 on p. 89 of the MCP3561/2/4R datasheet)
+        # MCP3564R ADC register address definitions (see Table 8-1 on p. 89 of the MCP3561/2/4R datasheet)
         self.ADCDATA = 0    # Latest ADC conversion data output value (3 or 4 bytes depending on DATA_FORMAT[1:0])
         self.CONFIG0 = 1    # ADC operating mode, Master clock mode and input bias current source mode (1 byte)
         self.CONFIG1 = 2    # Prescale and OSR settings (1 byte)
@@ -50,23 +59,30 @@ class me_gizmo:
         self.RESERVED3 = 14 # Reserved (2 bytes)
         self.CRCCFG = 15    # CRC checksum for device configuration (2 bytes)
 
-        # MCP3562R ADC fast command definitions (see Table 6-2 on p. 68 of the MCP3561/2/4R datasheet)
+        # MCP3564R ADC fast command definitions (see Table 6-2 on p. 68 of the MCP3561/2/4R datasheet)
         self.START_CONV = 10
         self.STANDBY = 11
         self.SHUTDOWN = 12
         self.FULL_SHUTDOWN = 13
         self.FULL_RESET = 14
 
-        # MCP3562R ADC input multiplexer register values (see Secion 8.7 on p. 96 of the MCP3561/2/4R datasheet)
+        # MCP3564R ADC input multiplexer register values (see Secion 8.7 on p. 96 of the MCP3561/2/4R datasheet)
         self.MUX_VREF = 0xB8        # VIN+ = REFIN+/OUT, VIN- = AGND
         self.MUX_NEG_VREF = 0x8B    # VIN+ = AGND, VIN- = REFIN+/OUT
-        self.MUX_CALIB = 0x13       # VIN+ = CH1/DACA, VIN- = CH3/DACB
+        self.MUX_DIFFAB = 0x13      # VIN+ = CH1/DACA, VIN- = CH3/DACB
+        self.MUX_DIFFCD = 0x57      # VIN+ = CH5/DACC, VIN- = CH7/DACD
         self.MUX_CH0_SE = 0x08      # VIN+ = CH0, VIN- = AGND
         self.MUX_CH1_SE = 0x18      # VIN+ = CH1/DACA, VIN- = AGND
         self.MUX_CH2_SE = 0x28      # VIN+ = CH2, VIN- = AGND
         self.MUX_CH3_SE = 0x38      # VIN+ = CH3/DACB, VIN- = AGND
+        self.MUX_CH4_SE = 0x48      # VIN+ = CH4, VIN- = AGND
+        self.MUX_CH5_SE = 0x58      # VIN+ = CH5/DACC, VIN- = AGND
+        self.MUX_CH6_SE = 0x68      # VIN+ = CH6, VIN- = AGND
+        self.MUX_CH7_SE = 0x78      # VIN+ = CH7/DACD, VIN- = AGND
         self.MUX_CHA_DIFF = 0x01    # VIN+ = CH0, VIN- = CH1/DACA
         self.MUX_CHB_DIFF = 0x23    # VIN+ = CH2, VIN- = CH3/DACB
+        self.MUX_CHC_DIFF = 0x45    # VIN+ = CH4, VIN- = CH5/DACC
+        self.MUX_CHD_DIFF = 0x67    # VIN+ = CH6, VIN- = CH7/DACD
 
         self.adc_gain = 1
 
@@ -374,30 +390,100 @@ class me_gizmo:
         self.write('DAC:DACB:ENA?')
         return int(self.read(), 16)
 
-    def dac_diff_set_value(self, value):
+    def dacC_set_value(self, value):
+        if not self.connected:
+            return
+        self.write(f'DAC:DACC:VALUE {int(value) & 0x0FFF:X}')
+
+    def dacC_get_value(self):
+        if not self.connected:
+            return
+        self.write('DAC:DACC:VALUE?')
+        return int(self.read(), 16)
+
+    def dacC_set_ena(self, value):
+        if not self.connected:
+            return
+        self.write(f'DAC:DACC:ENA {int(value) & 0xFF:X}')
+
+    def dacC_get_ena(self):
+        if not self.connected:
+            return
+        self.write('DAC:DACC:ENA?')
+        return int(self.read(), 16)
+
+    def dacD_set_value(self, value):
+        if not self.connected:
+            return
+        self.write(f'DAC:DACD:VALUE {int(value) & 0x0FFF:X}')
+
+    def dacD_get_value(self):
+        if not self.connected:
+            return
+        self.write('DAC:DACD:VALUE?')
+        return int(self.read(), 16)
+
+    def dacD_set_ena(self, value):
+        if not self.connected:
+            return
+        self.write(f'DAC:DACD:ENA {int(value) & 0xFF:X}')
+
+    def dacD_get_ena(self):
+        if not self.connected:
+            return
+        self.write('DAC:DACD:ENA?')
+        return int(self.read(), 16)
+
+    def dac_diffAB_set_value(self, value):
         if not self.connected:
             return
         if not (-4095 <= value <= 4095):
             return
         value = value if value >= 0 else value + 65536
-        self.write(f'DAC:DIFF:VALUE {int(value):X}')
+        self.write(f'DAC:DIFFAB:VALUE {int(value):X}')
 
-    def dac_diff_get_value(self):
+    def dac_diffAB_get_value(self):
         if not self.connected:
             return
-        self.write('DAC:DIFF:VALUE?')
+        self.write('DAC:DIFFAB:VALUE?')
         value = int(self.read(), 16)
         return value if value < 32768 else value - 65536
 
-    def dac_diff_set_ena(self, value):
+    def dac_diffAB_set_ena(self, value):
         if not self.connected:
             return
-        self.write(f'DAC:DIFF:ENA {int(value) & 0xFF:X}')
+        self.write(f'DAC:DIFFAB:ENA {int(value) & 0xFF:X}')
 
-    def dac_diff_get_ena(self):
+    def dac_diffAB_get_ena(self):
         if not self.connected:
             return
-        self.write('DAC:DIFF:ENA?')
+        self.write('DAC:DIFFAB:ENA?')
+        return int(self.read(), 16)
+
+    def dac_diffCD_set_value(self, value):
+        if not self.connected:
+            return
+        if not (-4095 <= value <= 4095):
+            return
+        value = value if value >= 0 else value + 65536
+        self.write(f'DAC:DIFFCD:VALUE {int(value):X}')
+
+    def dac_diffCD_get_value(self):
+        if not self.connected:
+            return
+        self.write('DAC:DIFFCD:VALUE?')
+        value = int(self.read(), 16)
+        return value if value < 32768 else value - 65536
+
+    def dac_diffCD_set_ena(self, value):
+        if not self.connected:
+            return
+        self.write(f'DAC:DIFFCD:ENA {int(value) & 0xFF:X}')
+
+    def dac_diffCD_get_ena(self):
+        if not self.connected:
+            return
+        self.write('DAC:DIFFCD:ENA?')
         return int(self.read(), 16)
 
     def dacA_set_voltage(self, voltage):
@@ -428,19 +514,61 @@ class me_gizmo:
         value = self.dacB_get_value()
         return (value - self.dacB_offset) / self.dacB_slope
 
-    def dac_diff_set_voltage(self, voltage):
+    def dacC_set_voltage(self, voltage):
         if not self.connected:
             return
-        value = int(round(voltage * self.diff_slope + self.diff_offset))
+        value = int(round(voltage * self.dacC_slope + self.dacC_offset))
+        value = value if value >= 0 else 0
+        value = value if value <= 4095 else 4095
+        self.dacC_set_value(value)
+
+    def dacC_get_voltage(self):
+        if not self.connected:
+            return
+        value = self.dacC_get_value()
+        return (value - self.dacC_offset) / self.dacC_slope
+
+    def dacD_set_voltage(self, voltage):
+        if not self.connected:
+            return
+        value = int(round(voltage * self.dacD_slope + self.dacD_offset))
+        value = value if value >= 0 else 0
+        value = value if value <= 4095 else 4095
+        self.dacD_set_value(value)
+
+    def dacD_get_voltage(self):
+        if not self.connected:
+            return
+        value = self.dacD_get_value()
+        return (value - self.dacD_offset) / self.dacD_slope
+
+    def dac_diffAB_set_voltage(self, voltage):
+        if not self.connected:
+            return
+        value = int(round(voltage * self.diffAB_slope + self.diffAB_offset))
         value = value if value >= -4095 else -4095
         value = value if value <= 4095 else 4095
-        self.dac_diff_set_value(value)
+        self.dac_diffAB_set_value(value)
 
-    def dac_diff_get_voltage(self):
+    def dac_diffAB_get_voltage(self):
         if not self.connected:
             return
-        value = self.dac_diff_get_value()
-        return (value - self.diff_offset) / self.diff_slope
+        value = self.dac_diffAB_get_value()
+        return (value - self.diffAB_offset) / self.diffAB_slope
+
+    def dac_diffCD_set_voltage(self, voltage):
+        if not self.connected:
+            return
+        value = int(round(voltage * self.diffCD_slope + self.diffCD_offset))
+        value = value if value >= -4095 else -4095
+        value = value if value <= 4095 else 4095
+        self.dac_diffCD_set_value(value)
+
+    def dac_diffCD_get_voltage(self):
+        if not self.connected:
+            return
+        value = self.dac_diffCD_get_value()
+        return (value - self.diffCD_offset) / self.diffCD_slope
 
 #
 # EEPROM methods
@@ -506,8 +634,17 @@ class me_gizmo:
         self.dacB_slope = copy.deepcopy(me_gizmo.nominal_dacB_slope)
         self.dacB_offset = copy.deepcopy(me_gizmo.nominal_dacB_offset)
 
-        self.diff_slope = copy.deepcopy(me_gizmo.nominal_diff_slope)
-        self.diff_offset = copy.deepcopy(me_gizmo.nominal_diff_offset)
+        self.dacC_slope = copy.deepcopy(me_gizmo.nominal_dacC_slope)
+        self.dacC_offset = copy.deepcopy(me_gizmo.nominal_dacC_offset)
+
+        self.dacD_slope = copy.deepcopy(me_gizmo.nominal_dacD_slope)
+        self.dacD_offset = copy.deepcopy(me_gizmo.nominal_dacD_offset)
+
+        self.diffAB_slope = copy.deepcopy(me_gizmo.nominal_diffAB_slope)
+        self.diffAB_offset = copy.deepcopy(me_gizmo.nominal_diffAB_offset)
+
+        self.diffCD_slope = copy.deepcopy(me_gizmo.nominal_diffCD_slope)
+        self.diffCD_offset = copy.deepcopy(me_gizmo.nominal_diffCD_offset)
 
     def float_to_vals(self, x):
         if x < 0.:
@@ -557,10 +694,31 @@ class me_gizmo:
         calib_values.extend([offset_vals[0] & 0xFF, (offset_vals[0] >> 8) & 0xFF, offset_vals[0] >> 16])
         calib_values.extend([offset_vals[1] & 0xFF, (offset_vals[1] >> 8) & 0xFF, offset_vals[1] >> 16])
 
-        slope_val = int(round(2 ** 23 * self.diff_slope / me_gizmo.nominal_diff_slope))
+        slope_val = int(round(2 ** 23 * self.dacC_slope / me_gizmo.nominal_dacC_slope))
         calib_values.extend([slope_val & 0xFF, (slope_val >> 8) & 0xFF, slope_val >> 16])
 
-        offset_vals = self.float_to_vals(self.diff_offset)
+        offset_vals = self.float_to_vals(self.dacC_offset)
+        calib_values.extend([offset_vals[0] & 0xFF, (offset_vals[0] >> 8) & 0xFF, offset_vals[0] >> 16])
+        calib_values.extend([offset_vals[1] & 0xFF, (offset_vals[1] >> 8) & 0xFF, offset_vals[1] >> 16])
+
+        slope_val = int(round(2 ** 23 * self.dacD_slope / me_gizmo.nominal_dacD_slope))
+        calib_values.extend([slope_val & 0xFF, (slope_val >> 8) & 0xFF, slope_val >> 16])
+
+        offset_vals = self.float_to_vals(self.dacD_offset)
+        calib_values.extend([offset_vals[0] & 0xFF, (offset_vals[0] >> 8) & 0xFF, offset_vals[0] >> 16])
+        calib_values.extend([offset_vals[1] & 0xFF, (offset_vals[1] >> 8) & 0xFF, offset_vals[1] >> 16])
+
+        slope_val = int(round(2 ** 23 * self.diffAB_slope / me_gizmo.nominal_diffAB_slope))
+        calib_values.extend([slope_val & 0xFF, (slope_val >> 8) & 0xFF, slope_val >> 16])
+
+        offset_vals = self.float_to_vals(self.diffAB_offset)
+        calib_values.extend([offset_vals[0] & 0xFF, (offset_vals[0] >> 8) & 0xFF, offset_vals[0] >> 16])
+        calib_values.extend([offset_vals[1] & 0xFF, (offset_vals[1] >> 8) & 0xFF, offset_vals[1] >> 16])
+
+        slope_val = int(round(2 ** 23 * self.diffCD_slope / me_gizmo.nominal_diffCD_slope))
+        calib_values.extend([slope_val & 0xFF, (slope_val >> 8) & 0xFF, slope_val >> 16])
+
+        offset_vals = self.float_to_vals(self.diffCD_offset)
         calib_values.extend([offset_vals[0] & 0xFF, (offset_vals[0] >> 8) & 0xFF, offset_vals[0] >> 16])
         calib_values.extend([offset_vals[1] & 0xFF, (offset_vals[1] >> 8) & 0xFF, offset_vals[1] >> 16])
 
@@ -571,9 +729,9 @@ class me_gizmo:
         if not self.connected:
             return
 
-        calib_values = self.eeprom_read(256, 99)
+        calib_values = self.eeprom_read(256, 126)
 
-        if len(calib_values) != 99:
+        if len(calib_values) != 126:
             return
 
         if all([val == 0xFF for val in calib_values]):
@@ -609,11 +767,38 @@ class me_gizmo:
         i = 10
         slope_val = calib_values[9 * i] | (calib_values[9 * i + 1] << 8) | (calib_values[9 * i + 2] << 16)
         slope_val = slope_val / 2 ** 23
-        self.diff_slope = slope_val * me_gizmo.nominal_diff_slope
+        self.dacC_slope = slope_val * me_gizmo.nominal_dacC_slope
 
         offset_val1 = calib_values[9 * i + 3] | (calib_values[9 * i + 4] << 8) | (calib_values[9 * i + 5] << 16)
         offset_val2 = calib_values[9 * i + 6] | (calib_values[9 * i + 7] << 8) | (calib_values[9 * i + 8] << 16)
-        self.diff_offset = self.vals_to_float(offset_val1, offset_val2)
+        self.dacC_offset = self.vals_to_float(offset_val1, offset_val2)
+
+        i = 11
+        slope_val = calib_values[9 * i] | (calib_values[9 * i + 1] << 8) | (calib_values[9 * i + 2] << 16)
+        slope_val = slope_val / 2 ** 23
+        self.dacD_slope = slope_val * me_gizmo.nominal_dacD_slope
+
+        offset_val1 = calib_values[9 * i + 3] | (calib_values[9 * i + 4] << 8) | (calib_values[9 * i + 5] << 16)
+        offset_val2 = calib_values[9 * i + 6] | (calib_values[9 * i + 7] << 8) | (calib_values[9 * i + 8] << 16)
+        self.dacD_offset = self.vals_to_float(offset_val1, offset_val2)
+
+        i = 12
+        slope_val = calib_values[9 * i] | (calib_values[9 * i + 1] << 8) | (calib_values[9 * i + 2] << 16)
+        slope_val = slope_val / 2 ** 23
+        self.diffAB_slope = slope_val * me_gizmo.nominal_diffAB_slope
+
+        offset_val1 = calib_values[9 * i + 3] | (calib_values[9 * i + 4] << 8) | (calib_values[9 * i + 5] << 16)
+        offset_val2 = calib_values[9 * i + 6] | (calib_values[9 * i + 7] << 8) | (calib_values[9 * i + 8] << 16)
+        self.diffAB_offset = self.vals_to_float(offset_val1, offset_val2)
+
+        i = 13
+        slope_val = calib_values[9 * i] | (calib_values[9 * i + 1] << 8) | (calib_values[9 * i + 2] << 16)
+        slope_val = slope_val / 2 ** 23
+        self.diffCD_slope = slope_val * me_gizmo.nominal_diffCD_slope
+
+        offset_val1 = calib_values[9 * i + 3] | (calib_values[9 * i + 4] << 8) | (calib_values[9 * i + 5] << 16)
+        offset_val2 = calib_values[9 * i + 6] | (calib_values[9 * i + 7] << 8) | (calib_values[9 * i + 8] << 16)
+        self.diffCD_offset = self.vals_to_float(offset_val1, offset_val2)
 
     def save_calib_values(self, filename):
         file = open(filename, 'w')
@@ -640,10 +825,31 @@ class me_gizmo:
         file.write(f'{offset_vals[0]:06X}\n')
         file.write(f'{offset_vals[1]:06X}\n')
 
-        slope_val = int(round(2 ** 23 * self.diff_slope / me_gizmo.nominal_diff_slope))
+        slope_val = int(round(2 ** 23 * self.dacC_slope / me_gizmo.nominal_dacC_slope))
         file.write(f'{slope_val:06X}\n')
 
-        offset_vals = self.float_to_vals(self.diff_offset)
+        offset_vals = self.float_to_vals(self.dacC_offset)
+        file.write(f'{offset_vals[0]:06X}\n')
+        file.write(f'{offset_vals[1]:06X}\n')
+
+        slope_val = int(round(2 ** 23 * self.dacD_slope / me_gizmo.nominal_dacD_slope))
+        file.write(f'{slope_val:06X}\n')
+
+        offset_vals = self.float_to_vals(self.dacD_offset)
+        file.write(f'{offset_vals[0]:06X}\n')
+        file.write(f'{offset_vals[1]:06X}\n')
+
+        slope_val = int(round(2 ** 23 * self.diffAB_slope / me_gizmo.nominal_diffAB_slope))
+        file.write(f'{slope_val:06X}\n')
+
+        offset_vals = self.float_to_vals(self.diffAB_offset)
+        file.write(f'{offset_vals[0]:06X}\n')
+        file.write(f'{offset_vals[1]:06X}\n')
+
+        slope_val = int(round(2 ** 23 * self.diffCD_slope / me_gizmo.nominal_diffCD_slope))
+        file.write(f'{slope_val:06X}\n')
+
+        offset_vals = self.float_to_vals(self.diffCD_offset)
         file.write(f'{offset_vals[0]:06X}\n')
         file.write(f'{offset_vals[1]:06X}\n')
 
@@ -682,11 +888,35 @@ class me_gizmo:
 
         slope_val = int(file.readline().strip(), 16)
         slope_val = slope_val / 2 ** 23
-        self.diff_slope = slope_val * me_gizmo.nominal_diff_slope
+        self.dacC_slope = slope_val * me_gizmo.nominal_dacC_slope
 
         offset_val1 = int(file.readline().strip(), 16)
         offset_val2 = int(file.readline().strip(), 16)
-        self.diff_offset = self.vals_to_float(offset_val1, offset_val2)
+        self.dacC_offset = self.vals_to_float(offset_val1, offset_val2)
+
+        slope_val = int(file.readline().strip(), 16)
+        slope_val = slope_val / 2 ** 23
+        self.dacD_slope = slope_val * me_gizmo.nominal_dacD_slope
+
+        offset_val1 = int(file.readline().strip(), 16)
+        offset_val2 = int(file.readline().strip(), 16)
+        self.dacD_offset = self.vals_to_float(offset_val1, offset_val2)
+
+        slope_val = int(file.readline().strip(), 16)
+        slope_val = slope_val / 2 ** 23
+        self.diffAB_slope = slope_val * me_gizmo.nominal_diffAB_slope
+
+        offset_val1 = int(file.readline().strip(), 16)
+        offset_val2 = int(file.readline().strip(), 16)
+        self.diffAB_offset = self.vals_to_float(offset_val1, offset_val2)
+
+        slope_val = int(file.readline().strip(), 16)
+        slope_val = slope_val / 2 ** 23
+        self.diffCD_slope = slope_val * me_gizmo.nominal_diffCD_slope
+
+        offset_val1 = int(file.readline().strip(), 16)
+        offset_val2 = int(file.readline().strip(), 16)
+        self.diffCD_offset = self.vals_to_float(offset_val1, offset_val2)
 
         file.close()
 

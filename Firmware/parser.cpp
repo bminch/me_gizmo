@@ -127,11 +127,17 @@ DISPATCH_ENTRY_T adc_stream_table[] = {{ "INTERVAL", adc_stream_interval_handler
 
 void dac_dacA_handler(char *args);
 void dac_dacB_handler(char *args);
-void dac_diff_handler(char *args);
+void dac_dacC_handler(char *args);
+void dac_dacD_handler(char *args);
+void dac_diffAB_handler(char *args);
+void dac_diffCD_handler(char *args);
 
 DISPATCH_ENTRY_T dac_table[] = {{ "DACA", dac_dacA_handler }, 
                                 { "DACB", dac_dacB_handler }, 
-                                { "DIFF", dac_diff_handler }};
+                                { "DACC", dac_dacC_handler }, 
+                                { "DACD", dac_dacD_handler }, 
+                                { "DIFFAB", dac_diffAB_handler }, 
+                                { "DIFFCD", dac_diffCD_handler }};
 
 #define DAC_TABLE_ENTRIES       sizeof(dac_table) / sizeof(DISPATCH_ENTRY_T)
 
@@ -159,17 +165,53 @@ DISPATCH_ENTRY_T dac_dacB_table[] = {{ "VALUE", dac_dacB_value_handler },
 
 #define DAC_DACB_TABLE_ENTRIES  sizeof(dac_dacB_table) / sizeof(DISPATCH_ENTRY_T)
 
-void dac_diff_value_handler(char *args);
-void dac_diff_valueQ_handler(char *args);
-void dac_diff_ena_handler(char *args);
-void dac_diff_enaQ_handler(char *args);
+void dac_dacC_value_handler(char *args);
+void dac_dacC_valueQ_handler(char *args);
+void dac_dacC_ena_handler(char *args);
+void dac_dacC_enaQ_handler(char *args);
 
-DISPATCH_ENTRY_T dac_diff_table[] = {{ "VALUE", dac_diff_value_handler }, 
-                                     { "VALUE?", dac_diff_valueQ_handler }, 
-                                     { "ENA", dac_diff_ena_handler }, 
-                                     { "ENA?", dac_diff_enaQ_handler }};
+DISPATCH_ENTRY_T dac_dacC_table[] = {{ "VALUE", dac_dacC_value_handler }, 
+                                     { "VALUE?", dac_dacC_valueQ_handler }, 
+                                     { "ENA", dac_dacC_ena_handler }, 
+                                     { "ENA?", dac_dacC_enaQ_handler }};
 
-#define DAC_DIFF_TABLE_ENTRIES  sizeof(dac_diff_table) / sizeof(DISPATCH_ENTRY_T)
+#define DAC_DACC_TABLE_ENTRIES  sizeof(dac_dacC_table) / sizeof(DISPATCH_ENTRY_T)
+
+void dac_dacD_value_handler(char *args);
+void dac_dacD_valueQ_handler(char *args);
+void dac_dacD_ena_handler(char *args);
+void dac_dacD_enaQ_handler(char *args);
+
+DISPATCH_ENTRY_T dac_dacD_table[] = {{ "VALUE", dac_dacD_value_handler }, 
+                                     { "VALUE?", dac_dacD_valueQ_handler }, 
+                                     { "ENA", dac_dacD_ena_handler }, 
+                                     { "ENA?", dac_dacD_enaQ_handler }};
+
+#define DAC_DACD_TABLE_ENTRIES  sizeof(dac_dacD_table) / sizeof(DISPATCH_ENTRY_T)
+
+void dac_diffAB_value_handler(char *args);
+void dac_diffAB_valueQ_handler(char *args);
+void dac_diffAB_ena_handler(char *args);
+void dac_diffAB_enaQ_handler(char *args);
+
+DISPATCH_ENTRY_T dac_diffAB_table[] = {{ "VALUE", dac_diffAB_value_handler }, 
+                                       { "VALUE?", dac_diffAB_valueQ_handler }, 
+                                       { "ENA", dac_diffAB_ena_handler }, 
+                                       { "ENA?", dac_diffAB_enaQ_handler }};
+
+#define DAC_DIFFAB_TABLE_ENTRIES    sizeof(dac_diffAB_table) / sizeof(DISPATCH_ENTRY_T)
+
+void dac_diffCD_value_handler(char *args);
+void dac_diffCD_valueQ_handler(char *args);
+void dac_diffCD_ena_handler(char *args);
+void dac_diffCD_enaQ_handler(char *args);
+
+DISPATCH_ENTRY_T dac_diffCD_table[] = {{ "VALUE", dac_diffCD_value_handler }, 
+                                       { "VALUE?", dac_diffCD_valueQ_handler }, 
+                                       { "ENA", dac_diffCD_ena_handler }, 
+                                       { "ENA?", dac_diffCD_enaQ_handler }};
+
+#define DAC_DIFFCD_TABLE_ENTRIES    sizeof(dac_diffCD_table) / sizeof(DISPATCH_ENTRY_T)
 
 void eeprom_read_handler(char *args);
 void eeprom_write_handler(char *args);
@@ -1087,16 +1129,64 @@ void dac_dacB_handler(char *args) {
     }
 }
 
-void dac_diff_handler(char *args) {
+void dac_dacC_handler(char *args) {
     uint16_t i;
     char *command, *remainder;
 
     remainder = (char *)NULL;
     command = str_tok_r(args, ":, ", &remainder);
     if (command) {
-        for (i = 0; i < DAC_DIFF_TABLE_ENTRIES; i++) {
-            if (str_cmp(command, dac_diff_table[i].command) == 0) {
-                dac_diff_table[i].handler(remainder);
+        for (i = 0; i < DAC_DACC_TABLE_ENTRIES; i++) {
+            if (str_cmp(command, dac_dacC_table[i].command) == 0) {
+                dac_dacC_table[i].handler(remainder);
+                break;
+            }
+        }
+    }
+}
+
+void dac_dacD_handler(char *args) {
+    uint16_t i;
+    char *command, *remainder;
+
+    remainder = (char *)NULL;
+    command = str_tok_r(args, ":, ", &remainder);
+    if (command) {
+        for (i = 0; i < DAC_DACD_TABLE_ENTRIES; i++) {
+            if (str_cmp(command, dac_dacD_table[i].command) == 0) {
+                dac_dacD_table[i].handler(remainder);
+                break;
+            }
+        }
+    }
+}
+
+void dac_diffAB_handler(char *args) {
+    uint16_t i;
+    char *command, *remainder;
+
+    remainder = (char *)NULL;
+    command = str_tok_r(args, ":, ", &remainder);
+    if (command) {
+        for (i = 0; i < DAC_DIFFAB_TABLE_ENTRIES; i++) {
+            if (str_cmp(command, dac_diffAB_table[i].command) == 0) {
+                dac_diffAB_table[i].handler(remainder);
+                break;
+            }
+        }
+    }
+}
+
+void dac_diffCD_handler(char *args) {
+    uint16_t i;
+    char *command, *remainder;
+
+    remainder = (char *)NULL;
+    command = str_tok_r(args, ":, ", &remainder);
+    if (command) {
+        for (i = 0; i < DAC_DIFFCD_TABLE_ENTRIES; i++) {
+            if (str_cmp(command, dac_diffCD_table[i].command) == 0) {
+                dac_diffCD_table[i].handler(remainder);
                 break;
             }
         }
@@ -1185,8 +1275,8 @@ void dac_dacB_enaQ_handler(char *args) {
     Serial.print("\r\n");
 }
 
-// DAC:DIFF commands
-void dac_diff_value_handler(char *args) {
+// DAC:DACC commands
+void dac_dacC_value_handler(char *args) {
     char *arg, *remainder;
     uint16_t val;
 
@@ -1195,18 +1285,18 @@ void dac_diff_value_handler(char *args) {
     if (str2hex(arg, &val) != 0)
         return;
 
-    dac_diff_set_val((int16_t)val);
+    dac_dacC_set_val(val);
 }
 
-void dac_diff_valueQ_handler(char *args) {
+void dac_dacC_valueQ_handler(char *args) {
     char str[5];
 
-    hex2str_alt((uint16_t)dac_diff_get_val(), str);
+    hex2str_alt(dac_dacC_get_val(), str);
     Serial.print(str);
     Serial.print("\r\n");
 }
 
-void dac_diff_ena_handler(char *args) {
+void dac_dacC_ena_handler(char *args) {
     char *arg, *remainder;
     uint16_t val;
 
@@ -1215,13 +1305,136 @@ void dac_diff_ena_handler(char *args) {
     if (str2hex(arg, &val) != 0)
         return;
 
-    dac_diff_set_ena((uint8_t)val);
+    dac_dacC_set_ena((uint8_t)val);
 }
 
-void dac_diff_enaQ_handler(char *args) {
+void dac_dacC_enaQ_handler(char *args) {
     char str[5];
 
-    hex2str_alt((uint16_t)dac_diff_get_ena(), str);
+    hex2str_alt((uint16_t)dac_dacC_get_ena(), str);
+    Serial.print(str);
+    Serial.print("\r\n");
+}
+
+// DAC:DACD commands
+void dac_dacD_value_handler(char *args) {
+    char *arg, *remainder;
+    uint16_t val;
+
+    remainder = (char *)NULL;
+    arg = str_tok_r(args, ", ", &remainder);
+    if (str2hex(arg, &val) != 0)
+        return;
+
+    dac_dacD_set_val(val);
+}
+
+void dac_dacD_valueQ_handler(char *args) {
+    char str[5];
+
+    hex2str_alt(dac_dacD_get_val(), str);
+    Serial.print(str);
+    Serial.print("\r\n");
+}
+
+void dac_dacD_ena_handler(char *args) {
+    char *arg, *remainder;
+    uint16_t val;
+
+    remainder = (char *)NULL;
+    arg = str_tok_r(args, ", ", &remainder);
+    if (str2hex(arg, &val) != 0)
+        return;
+
+    dac_dacD_set_ena((uint8_t)val);
+}
+
+void dac_dacD_enaQ_handler(char *args) {
+    char str[5];
+
+    hex2str_alt((uint16_t)dac_dacD_get_ena(), str);
+    Serial.print(str);
+    Serial.print("\r\n");
+}
+
+// DAC:DIFFAB commands
+void dac_diffAB_value_handler(char *args) {
+    char *arg, *remainder;
+    uint16_t val;
+
+    remainder = (char *)NULL;
+    arg = str_tok_r(args, ", ", &remainder);
+    if (str2hex(arg, &val) != 0)
+        return;
+
+    dac_diffAB_set_val((int16_t)val);
+}
+
+void dac_diffAB_valueQ_handler(char *args) {
+    char str[5];
+
+    hex2str_alt((uint16_t)dac_diffAB_get_val(), str);
+    Serial.print(str);
+    Serial.print("\r\n");
+}
+
+void dac_diffAB_ena_handler(char *args) {
+    char *arg, *remainder;
+    uint16_t val;
+
+    remainder = (char *)NULL;
+    arg = str_tok_r(args, ", ", &remainder);
+    if (str2hex(arg, &val) != 0)
+        return;
+
+    dac_diffAB_set_ena((uint8_t)val);
+}
+
+void dac_diffAB_enaQ_handler(char *args) {
+    char str[5];
+
+    hex2str_alt((uint16_t)dac_diffAB_get_ena(), str);
+    Serial.print(str);
+    Serial.print("\r\n");
+}
+
+// DAC:DIFFCD commands
+void dac_diffCD_value_handler(char *args) {
+    char *arg, *remainder;
+    uint16_t val;
+
+    remainder = (char *)NULL;
+    arg = str_tok_r(args, ", ", &remainder);
+    if (str2hex(arg, &val) != 0)
+        return;
+
+    dac_diffCD_set_val((int16_t)val);
+}
+
+void dac_diffCD_valueQ_handler(char *args) {
+    char str[5];
+
+    hex2str_alt((uint16_t)dac_diffCD_get_val(), str);
+    Serial.print(str);
+    Serial.print("\r\n");
+}
+
+void dac_diffCD_ena_handler(char *args) {
+    char *arg, *remainder;
+    uint16_t val;
+
+    remainder = (char *)NULL;
+    arg = str_tok_r(args, ", ", &remainder);
+    if (str2hex(arg, &val) != 0)
+        return;
+
+    dac_diffCD_set_ena((uint8_t)val);
+}
+
+void dac_diffCD_enaQ_handler(char *args) {
+    char str[5];
+
+    hex2str_alt((uint16_t)dac_diffCD_get_ena(), str);
     Serial.print(str);
     Serial.print("\r\n");
 }

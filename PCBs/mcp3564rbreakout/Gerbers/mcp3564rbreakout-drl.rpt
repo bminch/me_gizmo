@@ -1,0 +1,23 @@
+Drill report for mcp3564rbreakout.kicad_pcb
+Created on 2026-06-02T22:00:41-0400
+
+Copper Layer Stackup:
+    =============================================================
+    L1 :  F.Cu                      front
+    L2 :  B.Cu                      back
+
+
+Drill file 'mcp3564rbreakout.drl' contains
+    plated through holes:
+    =============================================================
+    T1  0.305mm  0.0120"  (44 holes)
+    T2  1.000mm  0.0394"  (24 holes)
+
+    Total plated holes count 68
+
+
+Not plated through holes are merged with plated holes
+    unplated through holes:
+    =============================================================
+
+    Total unplated holes count 0
