@@ -19,14 +19,14 @@
 
 #define DEBUG_TIMING_PIN    26
 
-// MCP3564R analog-to-digital converter (ADC) pin definitions
+// MCP3562R analog-to-digital converter (ADC) pin definitions
 #define ADC_IRQ_            20
 #define ADC_CSN             17
 #define ADC_SCK             18
 #define ADC_MISO            16
 #define ADC_MOSI            19
 
-// MCP3564R register address definitions (see Table 8-1 on p. 89 of the MCP3561/2/4R datasheet)
+// MCP3562R register address definitions (see Table 8-1 on p. 89 of the MCP3561/2/4R datasheet)
 #define ADC_ADCDATA         0   // Latest ADC conversion data output value (3 or 4 bytes depending on DATA_FORMAT[1:0])
 #define ADC_CONFIG0         1   // ADC operating mode, Master clock mode and input bias current source mode (1 byte)
 #define ADC_CONFIG1         2   // Prescale and OSR settings (1 byte)
@@ -44,36 +44,28 @@
 #define ADC_RESERVED3       14  // Reserved (2 bytes)
 #define ADC_CRCCFG          15  // CRC checksum for device configuration (2 bytes)
 
-// MCP3564R fast command definitions (see Table 6-2 on p. 68 of the MCP3561/2/4R datasheet)
+// MCP3562R fast command definitions (see Table 6-2 on p. 68 of the MCP3561/2/4R datasheet)
 #define ADC_START_CONV      10
 #define ADC_STANDBY         11
 #define ADC_SHUTDOWN        12
 #define ADC_FULL_SHUTDOWN   13
 #define ADC_FULL_RESET      14
 
-// MCP3564R input multiplexer register values (see Secion 8.7 on p. 96 of the MCP3561/2/4R datasheet)
+// MCP3562R input multiplexer register values (see Secion 8.7 on p. 96 of the MCP3561/2/4R datasheet)
 #define ADC_MUX_VREF        0xB8    // VIN+ = REFIN+/OUT, VIN- = AGND
 #define ADC_MUX_NEG_VREF    0x8B    // VIN+ = AGND, VIN- = REFIN+/OUT
-#define ADC_MUX_DIFFAB      0x13    // VIN+ = CH1/DACA, VIN- = CH3/DACB
-#define ADC_MUX_DIFFCD      0x57    // VIN+ = CH5/DACC, VIN- = CH7/DACD
+#define ADC_MUX_CALIB       0x13    // VIN+ = CH1/DACA, VIN- = CH3/DACB
 #define ADC_MUX_CH0_SE      0x08    // VIN+ = CH0, VIN- = AGND
 #define ADC_MUX_CH1_SE      0x18    // VIN+ = CH1/DACA, VIN- = AGND
 #define ADC_MUX_CH2_SE      0x28    // VIN+ = CH2, VIN- = AGND
 #define ADC_MUX_CH3_SE      0x38    // VIN+ = CH3/DACB, VIN- = AGND
-#define ADC_MUX_CH4_SE      0x48    // VIN+ = CH4, VIN- = AGND
-#define ADC_MUX_CH5_SE      0x58    // VIN+ = CH5/DACC, VIN- = AGND
-#define ADC_MUX_CH6_SE      0x68    // VIN+ = CH6, VIN- = AGND
-#define ADC_MUX_CH7_SE      0x78    // VIN+ = CH7/DACD, VIN- = AGND
 #define ADC_MUX_CHA_DIFF    0x01    // VIN+ = CH0, VIN- = CH1/DACA
 #define ADC_MUX_CHB_DIFF    0x23    // VIN+ = CH2, VIN- = CH3/DACB
-#define ADC_MUX_CHC_DIFF    0x45    // VIN+ = CH4, VIN- = CH5/DACC
-#define ADC_MUX_CHD_DIFF    0x67    // VIN+ = CH6, VIN- = CH7/DACD
 
 // MCP4922 digital-to-analog converter (DAC) pin definitions
 // Note: DAC shares SCK and MOSI lines with ADC
-#define DAC1_CSN            21
-#define DAC2_CSN            26
-#define DAC_LDAC            27
+#define DAC_CSN             21
+#define DAC_LDAC            22
 
 void init_me_gizmo(void);
 
@@ -105,8 +97,6 @@ void init_dac_pre_init_adc(void);
 void init_dac_post_init_adc(void);
 void dac_update_dacA(void);
 void dac_update_dacB(void);
-void dac_update_dacC(void);
-void dac_update_dacD(void);
 void dac_load(void);
 void dac_dacA_set_val(uint16_t value);
 uint16_t dac_dacA_get_val(void);
@@ -116,21 +106,9 @@ void dac_dacB_set_val(uint16_t value);
 uint16_t dac_dacB_get_val(void);
 void dac_dacB_set_ena(uint8_t ena);
 uint8_t dac_dacB_get_ena(void);
-void dac_dacC_set_val(uint16_t value);
-uint16_t dac_dacC_get_val(void);
-void dac_dacC_set_ena(uint8_t ena);
-uint8_t dac_dacC_get_ena(void);
-void dac_dacD_set_val(uint16_t value);
-uint16_t dac_dacD_get_val(void);
-void dac_dacD_set_ena(uint8_t ena);
-uint8_t dac_dacD_get_ena(void);
-void dac_diffAB_set_val(int16_t value);
-int16_t dac_diffAB_get_val(void);
-void dac_diffAB_set_ena(uint8_t ena);
-uint8_t dac_diffAB_get_ena(void);
-void dac_diffCD_set_val(int16_t value);
-int16_t dac_diffCD_get_val(void);
-void dac_diffCD_set_ena(uint8_t ena);
-uint8_t dac_diffCD_get_ena(void);
+void dac_diff_set_val(int16_t value);
+int16_t dac_diff_get_val(void);
+void dac_diff_set_ena(uint8_t ena);
+uint8_t dac_diff_get_ena(void);
 
 #endif

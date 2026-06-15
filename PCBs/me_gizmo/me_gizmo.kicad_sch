@@ -1,0 +1,76 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "5ed15c8a-a75a-41fd-bd31-0cc03d775f55")
+	(paper "A4")
+	(lib_symbols)
+	(sheet
+		(at 22.86 200.66)
+		(size 35.56 3.81)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "edbaebf3-550c-4ef8-80ba-d6e3a61224bd")
+		(property "Sheetname" "Wheatstone Bridge 1"
+			(at 22.86 199.9484 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "bridge1.kicad_sch"
+			(at 22.86 205.0546 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "1ADC_IN+" input
+			(at 50.8 204.47 270)
+			(uuid "4a062460-ee4b-41c2-9ea6-4a105c97ff27")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "1ADC_IN-" input
+			(at 54.61 204.47 270)
+			(uuid "d9b32d0f-0335-4279-ab30-db84248e0d7a")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(instances
+			(project "me_gizmo"
+				(path "/5ed15c8a-a75a-41fd-bd31-0cc03d775f55"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)
