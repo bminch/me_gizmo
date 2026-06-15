@@ -176,6 +176,7 @@ draw_now()
 input('Press enter to continue.')
 
 print('Calibrating ADC gain = 1 (Gain is x1)...')
+gizmo.adc_write_reg(gizmo.MUX, [gizmo.MUX_DIFFAB])
 gizmo.adc_set_gain(1)
 x = linspace(-2000, 2000, 201)
 y = zeros(201)
