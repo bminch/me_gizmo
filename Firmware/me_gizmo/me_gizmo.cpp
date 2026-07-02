@@ -2,11 +2,14 @@
 #include <SPI.h>
 
 SPISettings ADC_SPISettings(2000000, MSBFIRST, SPI_MODE0);
+SPISettings SWSettings(2000000, MSBFIRST, SPI_MODE1);
 
 uint16_t dacA_val = 0x800, dacB_val = 0x800, dacC_val = 0x800, dacD_val = 0x800;
 uint8_t dacA_ena = 0, dacB_ena = 0, dacC_ena = 0, dacD_ena = 0;
 
 uint16_t adc_scan_lists[4] = { 0, 0, 0, 0 };
+
+uint8_t sw_state[5] = { 0, 0, 0, 0, 0 };
 
 void init_me_gizmo(void) {
     pinMode(DEBUG_TIMING_PIN, OUTPUT);
@@ -15,6 +18,7 @@ void init_me_gizmo(void) {
     pinMode(LED_BUILTIN, OUTPUT);
     digitalWrite(LED_BUILTIN, LOW);
 
+    init_sw();
     init_dac_pre_init_adc();
     init_adc();
     init_dac_post_init_adc();
@@ -496,4 +500,44 @@ void dac_diffCD_set_ena(uint8_t ena) {
 
 uint8_t dac_diffCD_get_ena(void) {
     return dacC_ena | dacD_ena;
+}
+
+// Switch array functions
+void init_sw(void) {
+    pinMode(SW_SYNC, OUTPUT);
+    digitalWrite(SW_SYNC, HIGH);
+
+    pinMode(SW_RESET, OUTPUT);
+    digitalWrite(SW_RESET, HIGH);
+}
+
+uint8_t* sw_get_state(void) {
+    return sw_state;
+}
+
+void sw_set_state(uint8_t value[5]) {
+    uint8_t i;
+    for (i = 0; i < 5; i++) {
+        sw_state[i] = value[i];
+    }
+
+    SPI.beginTransaction(SWSettings);
+
+    digitalWrite(SW_SYNC, LOW);
+    for (i = 0; i < 5; i++) {
+        SPI.transfer(sw_state[i] & 0xFF);
+    }
+
+    digitalWrite(SW_SYNC, HIGH);
+
+    SPI.endTransaction();
+}
+
+void sw_reset(void) {
+    digitalWrite(SW_RESET, LOW);
+    digitalWrite(SW_RESET, HIGH);
+    for (uint8_t i = 0; i < 5; i++) {
+        sw_state[i] = 0;
+    }
+
 }

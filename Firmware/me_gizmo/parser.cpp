@@ -26,6 +26,7 @@ void adc_stream_task(void);
 void ui_handler(char *args);
 void adc_handler(char *args);
 void dac_handler(char *args);
+void sw_handler(char *args);
 void eeprom_handler(char *args);
 void idnQ_handler(char *args);
 
@@ -33,7 +34,8 @@ DISPATCH_ENTRY_T root_table[] = {{ "UI", ui_handler },
                                  { "ADC", adc_handler }, 
                                  { "DAC", dac_handler }, 
                                  { "EEPROM", eeprom_handler }, 
-                                 { "*IDN?", idnQ_handler }};
+                                 { "*IDN?", idnQ_handler },
+                                 { "SW", sw_handler }};
 
 #define ROOT_TABLE_ENTRIES      sizeof(root_table) / sizeof(DISPATCH_ENTRY_T)
 
@@ -226,6 +228,16 @@ DISPATCH_ENTRY_T eeprom_table[] = {{ "READ", eeprom_read_handler },
                                    { "ERASE", eeprom_erase_handler }};
 
 #define EEPROM_TABLE_ENTRIES    sizeof(eeprom_table) / sizeof(DISPATCH_ENTRY_T)
+
+void sw_state_handler(char *args);
+void sw_stateQ_handler(char *args);
+void sw_reset_handler(char *args);
+
+DISPATCH_ENTRY_T sw_table[] = {{ "STATE", sw_state_handler }, 
+                                {"STATE?", sw_stateQ_handler },
+                                {"RESET", sw_reset_handler }};
+
+#define SW_TABLE_ENTRIES    sizeof(sw_table) / sizeof(DISPATCH_ENTRY_T)
 
 // Parser utility functions
 bool it_is_time(uint32_t t, uint32_t t0, uint16_t dt) {
@@ -1437,6 +1449,58 @@ void dac_diffCD_enaQ_handler(char *args) {
     hex2str_alt((uint16_t)dac_diffCD_get_ena(), str);
     Serial.print(str);
     Serial.print("\r\n");
+}
+
+// Switch commands 
+void sw_handler(char *args) {
+    uint8_t i;
+    char *command, *remainder;
+
+    remainder = (char *)NULL;
+    command = str_tok_r(args, ":, ", &remainder);
+    if (command) {
+        for (i = 0; i < SW_TABLE_ENTRIES; i++) {
+            if (str_cmp(command, sw_table[i].command) == 0) {
+                sw_table[i].handler(remainder);
+                break;
+            }
+        }
+    }
+}
+
+void sw_state_handler(char *args) {
+    char *arg, *remainder;
+    uint16_t val;
+    uint8_t state[] = { 0, 0, 0, 0, 0 };
+    uint8_t iterator = 0;
+
+    remainder = (char *)NULL;
+    while (iterator < 5) {
+        arg = str_tok_r(iterator == 0 ? args : (char *)NULL, " ,", &remainder);
+        if (str2hex(arg, &val) != 0) {
+            break;
+        }
+        state[iterator++] = (uint8_t)val;
+    }
+    if (iterator == 0) {
+        return;
+    }
+    sw_set_state(state);
+}
+
+void sw_stateQ_handler(char *args) {
+    uint8_t i;
+    char str[5];
+    for (i = 0; i < 5; i++) {
+        hex2str_alt(sw_get_state()[i], str);
+        if (i != 0) Serial.print(',');
+        Serial.print(str);
+    }
+    Serial.print("\r\n");
+}
+
+void sw_reset_handler(char *args) {
+    sw_reset();
 }
 
 // EEPROM commands

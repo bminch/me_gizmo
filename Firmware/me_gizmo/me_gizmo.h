@@ -75,6 +75,16 @@
 #define DAC2_CSN            26
 #define DAC_LDAC            27
 
+// ADG714 switch array pin definitions (shares SCK and MOSI with ADC and DAC)
+#define SW_SYNC             14
+#define SW_RESET            15
+
+// Pico W ADG714 switch array simulator pin definitions
+#define PICO_SCLK           10
+#define PICO_RESET          11
+#define PICO_MOSI           12
+#define PICO_SYNC           13
+
 void init_me_gizmo(void);
 
 void init_adc(void);
@@ -132,5 +142,10 @@ void dac_diffCD_set_val(int16_t value);
 int16_t dac_diffCD_get_val(void);
 void dac_diffCD_set_ena(uint8_t ena);
 uint8_t dac_diffCD_get_ena(void);
+
+void init_sw(void);
+uint8_t* sw_get_state(void);
+void sw_set_state(uint8_t value[]);
+void sw_reset(void);
 
 #endif

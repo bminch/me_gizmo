@@ -3,7 +3,7 @@ const uint8_t RGB_G = 23;
 const uint8_t RGB_B = 24;
 const uint8_t LED = 25;
 
-const uint16_t BLINK_INTERVAL = 500;
+const uint16_t BLINK_INTERVAL = 1000;
 const uint16_t HUE_INTERVAL = 10;
 
 uint32_t blink_time, hue_time;
