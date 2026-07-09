@@ -89,6 +89,63 @@ class me_gizmo:
 
         self.adc_gain = 1
 
+        # Switch configurations:
+        # mode 0: RESET (default)
+        # mode 1: Quarter, 2-wire
+        # mode 2: Quarter, 3-wire
+        # mode 3: Half, adjacent branches
+        # mode 4: Half, opposite branches, 2-wire
+        # mode 5: Half, opposite branches, 3-wire
+        # mode 6: Full
+        self.SWMODE = [0, 0, 0, 0]  # Current mode of each channel (or last set)
+        self.RREF = 120  # Reference resistance (ohms)
+
+        #  Switch configuration ID numbers (branches are numbered clockwise starting with 2.5V--HB_OUT+)
+        self.SWID_CH1 = {
+            "2wire1": 27,
+            "2wire2": 26,
+            "R=120": {"branch2": 11, "branch3": 10, "branch4": 20},
+            "R=350": {"branch2": 12, "branch3": 13, "branch4": 21},
+        }
+        self.SWID_CH2 = {
+            "2wire1": 25,
+            "2wire2": 24,
+            "R=120": {"branch2": 9, "branch3": 8, "branch4": 22},
+            "R=350": {"branch2": 14, "branch3": 15, "branch4": 23},
+        }
+        self.SWID_CH3 = {
+            "2wire1": 31,
+            "2wire2": 30,
+            "R=120": {"branch2": 3, "branch3": 2, "branch4": 16},
+            "R=350": {"branch2": 4, "branch3": 5, "branch4": 17},
+        }
+        self.SWID_CH4 = {
+            "2wire1": 29,
+            "2wire2": 28,
+            "R=120": {"branch2": 1, "branch3": 0, "branch4": 18},
+            "R=350": {"branch2": 6, "branch3": 7, "branch4": 19},
+        }
+        # Key for toggle_led_array method
+        self.SWID_LED = {
+            "MODE1": [0],
+            "MODE2": [1],
+            "MODE3": [2],
+            "MODE4": [3],
+            "MODE5": [4],
+            "MODE6": [5],
+            "CH1": [],
+            "CH2": [6],
+            "CH3": [7],
+            "CH4": [6, 7],
+        }
+        self.SWID = {
+            "LED": self.SWID_LED,
+            "CH1": self.SWID_CH1,
+            "CH2": self.SWID_CH2,
+            "CH3": self.SWID_CH3,
+            "CH4": self.SWID_CH4,
+        }
+
         if port == "":
             self.dev = None
             self.connected = False
@@ -136,6 +193,14 @@ class me_gizmo:
         if not self.connected:
             return
         self.write("UI:LED TOGGLE")
+
+    def toggle_led_array(self, leds):
+        """
+        leds - list of LEDs to be toggled (int 0-7)
+        """
+        _current_state = [i for i in self.sw_get_state()]
+        _new_state = _current_state + [(4 + i) % 8 + 32 for i in leds]
+        self.sw_set_state([i for i in _new_state if _new_state.count(i) == 1])
 
     def set_led(self, val):
         if not self.connected:
@@ -619,7 +684,6 @@ class me_gizmo:
 
         self.write("SW:STATE?")
         read_state = (self.read()).split(",")
-        print(read_state)
 
         sw_per_array = 8
         state = []
@@ -633,10 +697,92 @@ class me_gizmo:
             array_id += sw_per_array
         return state
 
-    def sw_reset(self):
-        if not self.connected:
-            return
-        self.write("SW:RESET")
+    def sw_set_ref(self, ref=120):
+        """
+        Sets reference resistance attribute according to integer entry.
+        Only allows 120 or 350 reference.
+        """
+        _prev_ref = self.RREF
+        if ref > 235:
+            self.RREF = 350
+            print("Set reference to 350ohms")
+
+        if ref <= 235:
+            self.RREF = 120
+            print("Set reference to 120ohms")
+
+        # Update switch configurations to reflect change
+        if _prev_ref != self.RREF:
+            self.sw_set_config(1, self.SWMODE[0])
+
+    def sw_get_ref(self):
+        """
+        Returns the current reference resistance setting
+        """
+        return self.RREF
+
+    def sw_set_config(self, ch=1, mode=0):
+        """
+        Automatically sets the desired strain gauge configuration for the selected channel.
+        UI: LEDs 1-6 correspond to modes 1-6 and LEDs 7-8 correspond to the selected channel.
+            (7/8 OFF => CH1, 7 ON => CH2, 8 ON => CH3, 7/8 ON => CH4)
+
+        args:
+            ch - The channel being configured (accepts integers 1-4).
+            mode - The measurement mode being set (accepts integers 0 - 6).
+        """
+        if mode == 0:
+            if not self.connected:
+                return
+            self.write("SW:RESET")
+            self.SWMODE = [0, 0, 0, 0]
+        else:
+            self.SWMODE[ch - 1] = mode
+            _update_config = []
+            channel = 1
+            for i in self.SWMODE:
+                if i == 1:
+                    _update_config += [
+                        self.SWID[f"CH{channel}"]["2wire1"],
+                        self.SWID[f"CH{channel}"][f"R={self.RREF}"]["branch2"],
+                    ]
+                if i == 2:
+                    _update_config += [
+                        self.SWID[f"CH{channel}"][f"R={self.RREF}"]["branch2"]
+                    ]
+                if i == 3:
+                    _update_config += [
+                        self.SWID[f"CH{channel}"]["2wire1"],
+                        self.SWID[f"CH{channel}"]["2wire2"],
+                        self.SWID[f"CH{channel}"][f"R={self.RREF}"]["branch2"],
+                        self.SWID[f"CH{channel}"][f"R={self.RREF}"]["branch3"],
+                    ]
+                if i == 4:
+                    _update_config += [
+                        self.SWID[f"CH{channel}"]["2wire1"],
+                        self.SWID[f"CH{channel}"]["2wire2"],
+                        self.SWID[f"CH{channel}"][f"R={self.RREF}"]["branch2"],
+                        self.SWID[f"CH{channel}"][f"R={self.RREF}"]["branch4"],
+                    ]
+                if i == 5:
+                    _update_config += [
+                        self.SWID[f"CH{channel}"][f"R={self.RREF}"]["branch2"],
+                        self.SWID[f"CH{channel}"][f"R={self.RREF}"]["branch4"],
+                    ]
+                if i == 6:
+                    _update_config += [
+                        self.SWID[f"CH{channel}"]["2wire1"],
+                        self.SWID[f"CH{channel}"]["2wire2"],
+                    ]
+                channel += 1
+            self.sw_set_state(_update_config)
+            self.toggle_led_array([mode - 1] + self.SWID["LED"][f"CH{ch}"])
+
+    def sw_get_config(self):
+        """
+        Returns a list of the last measurement modes for each channel
+        """
+        return self.SWMODE
 
     #
     # EEPROM methods
