@@ -18,8 +18,8 @@ void init_me_gizmo(void) {
     pinMode(LED_BUILTIN, OUTPUT);
     digitalWrite(LED_BUILTIN, LOW);
 
-    init_sw();
     init_dac_pre_init_adc();
+    init_sw();
     init_adc();
     init_dac_post_init_adc();
 

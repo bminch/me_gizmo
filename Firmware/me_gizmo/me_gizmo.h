@@ -73,7 +73,7 @@
 // Note: DAC shares SCK and MOSI lines with ADC
 #define DAC1_CSN            21
 #define DAC2_CSN            26
-#define DAC_LDAC            27
+#define DAC_LDAC            28
 
 // ADG714 switch array pin definitions (shares SCK and MOSI with ADC and DAC)
 #define SW_SYNC             14
