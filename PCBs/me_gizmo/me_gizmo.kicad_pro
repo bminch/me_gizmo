@@ -620,6 +620,18 @@
           "label": "Description_1",
           "name": "Description_1",
           "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Device",
+          "name": "Sim.Device",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Pins",
+          "name": "Sim.Pins",
+          "show": false
         }
       ],
       "filter_string": "",
@@ -675,8 +687,28 @@
       "Root"
     ],
     [
-      "edbaebf3-550c-4ef8-80ba-d6e3a61224bd",
-      "Wheatstone Bridge 1"
+      "39d8a50c-debb-4b82-966b-43f84108d27d",
+      "CH1"
+    ],
+    [
+      "f53ff756-d0b6-42ad-9e12-4ebe431d4422",
+      "CH2"
+    ],
+    [
+      "3e4a3d8f-79a6-497e-8bb7-5b1ae81ef4cb",
+      "CH3"
+    ],
+    [
+      "d342d81d-0037-48c8-ba0e-1c491debc965",
+      "CH4"
+    ],
+    [
+      "6041856f-0485-4d67-a25f-c6f3f7a3f1cd",
+      "ADC/DAC"
+    ],
+    [
+      "07230c3f-5fa1-4969-89f5-c4421ac9b3dd",
+      "SWITCHES: POWER/LOGIC"
     ]
   ],
   "text_variables": {}
