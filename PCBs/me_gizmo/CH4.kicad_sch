@@ -2413,48 +2413,48 @@
 		)
 	)
 	(junction
-		(at 165.1 120.65)
+		(at 157.48 97.79)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "0f67d138-515e-4546-99ee-a1c3a3d58eea")
+		(uuid "3aa23ee1-b3f0-4592-b5f4-f29d7910fb66")
 	)
 	(junction
-		(at 196.85 120.65)
+		(at 163.83 97.79)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "86a838a6-18b6-4960-a007-91b3eac33e27")
 	)
 	(junction
-		(at 210.82 120.65)
+		(at 212.09 129.54)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "a689cf95-7bd1-4588-b09f-5cbdfda8cfb3")
+		(uuid "94a482b0-f9b9-4f33-b19d-dcd1cc8caac8")
 	)
 	(junction
-		(at 157.48 120.65)
+		(at 203.2 97.79)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "d66dd13b-d2ac-486c-acef-a8f7e2796e4c")
 	)
 	(junction
-		(at 203.2 120.65)
+		(at 195.58 97.79)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "e3da7c41-429b-4e67-baf4-f98acf714dd3")
+		(uuid "e0296403-3837-4084-b971-5643130fb368")
 	)
 	(wire
 		(pts
-			(xy 195.58 67.31) (xy 189.23 67.31)
+			(xy 157.48 97.79) (xy 163.83 97.79)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "0c2edf2f-af26-4466-b0ba-f5330e10abab")
+		(uuid "057155f6-868e-4ea7-bc73-4c9eb0dd9de5")
 	)
 	(wire
 		(pts
-			(xy 203.2 120.65) (xy 210.82 120.65)
+			(xy 149.86 97.79) (xy 157.48 97.79)
 		)
 		(stroke
 			(width 0)
@@ -2464,17 +2464,7 @@
 	)
 	(wire
 		(pts
-			(xy 196.85 120.65) (xy 203.2 120.65)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "222ab93b-e906-421c-ae68-fba586020b71")
-	)
-	(wire
-		(pts
-			(xy 203.2 88.9) (xy 210.82 88.9)
+			(xy 157.48 129.54) (xy 149.86 129.54)
 		)
 		(stroke
 			(width 0)
@@ -2484,23 +2474,13 @@
 	)
 	(wire
 		(pts
-			(xy 165.1 120.65) (xy 165.1 128.27)
+			(xy 195.58 97.79) (xy 195.58 90.17)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "5dc535bb-d56c-44b9-8735-70ee46c07b0c")
-	)
-	(wire
-		(pts
-			(xy 148.59 88.9) (xy 157.48 88.9)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7124c934-1de9-4876-820e-f583c16ef0fe")
 	)
 	(wire
 		(pts
@@ -2514,7 +2494,7 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 120.65) (xy 165.1 120.65)
+			(xy 203.2 97.79) (xy 195.58 97.79)
 		)
 		(stroke
 			(width 0)
@@ -2524,7 +2504,17 @@
 	)
 	(wire
 		(pts
-			(xy 148.59 120.65) (xy 157.48 120.65)
+			(xy 203.2 129.54) (xy 212.09 129.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e2caf962-3ec2-4112-af13-dcc043099eb9")
+	)
+	(wire
+		(pts
+			(xy 212.09 97.79) (xy 203.2 97.79)
 		)
 		(stroke
 			(width 0)
@@ -2534,13 +2524,23 @@
 	)
 	(wire
 		(pts
-			(xy 196.85 120.65) (xy 196.85 128.27)
+			(xy 163.83 97.79) (xy 163.83 90.17)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "e9a0481d-09bf-48f8-9f80-dc5f3c4ea762")
+	)
+	(wire
+		(pts
+			(xy 189.23 67.31) (xy 195.58 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f7ae4578-0c64-46c0-912b-f959e6ad7557")
 	)
 	(label "HB4+"
 		(at 66.04 90.17 180)
@@ -2553,7 +2553,7 @@
 		(uuid "5908fc5c-2b9b-481d-8968-3fc932be6adf")
 	)
 	(label "HB4-"
-		(at 148.59 120.65 270)
+		(at 149.86 129.54 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2563,7 +2563,7 @@
 		(uuid "63695d63-4e60-4d57-bd96-9f0c66834f2c")
 	)
 	(label "HB4+"
-		(at 210.82 88.9 90)
+		(at 212.09 97.79 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2666,7 +2666,7 @@
 	)
 	(global_label "VREF_BUF"
 		(shape input)
-		(at 148.59 88.9 90)
+		(at 149.86 97.79 90)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2676,7 +2676,7 @@
 		)
 		(uuid "ff7d7722-d0d3-4a81-afb5-99bdccb2b37d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 148.59 76.6619 90)
+			(at 149.86 85.5519 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2710,7 +2710,7 @@
 	)
 	(symbol
 		(lib_id "Analog_Switch:ADG714")
-		(at 177.8 129.54 0)
+		(at 182.88 96.52 180)
 		(unit 8)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -2719,7 +2719,7 @@
 		(fields_autoplaced yes)
 		(uuid "061412c2-cf90-4291-81bb-c7c36bbe011d")
 		(property "Reference" "U4"
-			(at 177.8 133.858 0)
+			(at 182.88 92.202 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2728,7 +2728,7 @@
 			)
 		)
 		(property "Value" "ADG714"
-			(at 177.165 124.46 0)
+			(at 183.515 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2736,7 +2736,7 @@
 			)
 		)
 		(property "Footprint" "Package_SO:TSSOP-24_4.4x7.8mm_P0.65mm"
-			(at 177.8 129.54 0)
+			(at 182.88 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2745,7 +2745,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 177.8 129.54 0)
+			(at 182.88 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2754,7 +2754,7 @@
 			)
 		)
 		(property "Description" "Analog serial controlled switch array"
-			(at 177.8 129.54 0)
+			(at 182.88 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2763,7 +2763,7 @@
 			)
 		)
 		(property "Availability" ""
-			(at 177.8 129.54 0)
+			(at 182.88 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2772,7 +2772,7 @@
 			)
 		)
 		(property "Check_prices" ""
-			(at 177.8 129.54 0)
+			(at 182.88 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2781,7 +2781,7 @@
 			)
 		)
 		(property "Description_1" ""
-			(at 177.8 129.54 0)
+			(at 182.88 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2790,7 +2790,7 @@
 			)
 		)
 		(property "MF" ""
-			(at 177.8 129.54 0)
+			(at 182.88 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2799,7 +2799,7 @@
 			)
 		)
 		(property "MP" ""
-			(at 177.8 129.54 0)
+			(at 182.88 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2808,7 +2808,7 @@
 			)
 		)
 		(property "Package" ""
-			(at 177.8 129.54 0)
+			(at 182.88 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2817,7 +2817,7 @@
 			)
 		)
 		(property "Price" ""
-			(at 177.8 129.54 0)
+			(at 182.88 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2826,7 +2826,7 @@
 			)
 		)
 		(property "SnapEDA_Link" ""
-			(at 177.8 129.54 0)
+			(at 182.88 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2917,7 +2917,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 193.04 120.65 90)
+		(at 167.64 97.79 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -2925,7 +2925,7 @@
 		(dnp no)
 		(uuid "1319ba34-6322-447a-9045-31195c1a4097")
 		(property "Reference" "R24"
-			(at 191.77 118.745 0)
+			(at 168.91 99.695 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2933,8 +2933,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "118"
-			(at 194.31 118.745 0)
+		(property "Value" "118Ω"
+			(at 166.37 99.695 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2943,7 +2943,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 193.04 122.428 90)
+			(at 167.64 96.012 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2952,7 +2952,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 193.04 120.65 0)
+			(at 167.64 97.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2961,7 +2961,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 193.04 120.65 0)
+			(at 167.64 97.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2986,7 +2986,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 210.82 120.65 0)
+		(at 212.09 129.54 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -2995,7 +2995,7 @@
 		(fields_autoplaced yes)
 		(uuid "14f60225-6d1a-42c5-9d62-45630358359d")
 		(property "Reference" "#PWR038"
-			(at 210.82 127 0)
+			(at 212.09 135.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3004,7 +3004,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 210.82 125.73 0)
+			(at 212.09 134.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3012,7 +3012,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 210.82 120.65 0)
+			(at 212.09 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3021,7 +3021,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 210.82 120.65 0)
+			(at 212.09 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3030,7 +3030,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 210.82 120.65 0)
+			(at 212.09 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3052,16 +3052,15 @@
 	)
 	(symbol
 		(lib_id "Analog_Switch:ADG714")
-		(at 177.8 121.92 0)
+		(at 204.47 116.84 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "1e204e76-99ec-4010-a8b0-3ddc5763c36a")
 		(property "Reference" "U4"
-			(at 177.8 126.238 0)
+			(at 208.788 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3070,15 +3069,16 @@
 			)
 		)
 		(property "Value" "ADG714"
-			(at 177.165 116.205 0)
+			(at 199.136 113.792 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify right)
 			)
 		)
 		(property "Footprint" "Package_SO:TSSOP-24_4.4x7.8mm_P0.65mm"
-			(at 177.8 121.92 0)
+			(at 204.47 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3087,7 +3087,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 177.8 121.92 0)
+			(at 204.47 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3096,7 +3096,7 @@
 			)
 		)
 		(property "Description" "Analog serial controlled switch array"
-			(at 177.8 121.92 0)
+			(at 204.47 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3105,7 +3105,7 @@
 			)
 		)
 		(property "Availability" ""
-			(at 177.8 121.92 0)
+			(at 204.47 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3114,7 +3114,7 @@
 			)
 		)
 		(property "Check_prices" ""
-			(at 177.8 121.92 0)
+			(at 204.47 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3123,7 +3123,7 @@
 			)
 		)
 		(property "Description_1" ""
-			(at 177.8 121.92 0)
+			(at 204.47 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3132,7 +3132,7 @@
 			)
 		)
 		(property "MF" ""
-			(at 177.8 121.92 0)
+			(at 204.47 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3141,7 +3141,7 @@
 			)
 		)
 		(property "MP" ""
-			(at 177.8 121.92 0)
+			(at 204.47 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3150,7 +3150,7 @@
 			)
 		)
 		(property "Package" ""
-			(at 177.8 121.92 0)
+			(at 204.47 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3159,7 +3159,7 @@
 			)
 		)
 		(property "Price" ""
-			(at 177.8 121.92 0)
+			(at 204.47 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3168,7 +3168,7 @@
 			)
 		)
 		(property "SnapEDA_Link" ""
-			(at 177.8 121.92 0)
+			(at 204.47 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3259,7 +3259,7 @@
 	)
 	(symbol
 		(lib_id "Analog_Switch:ADG714")
-		(at 201.93 101.6 270)
+		(at 182.88 88.9 180)
 		(unit 7)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3268,7 +3268,7 @@
 		(fields_autoplaced yes)
 		(uuid "299145ab-dd99-4079-91f0-7b6f0eb6bd5f")
 		(property "Reference" "U4"
-			(at 197.612 101.6 0)
+			(at 182.88 84.582 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3277,7 +3277,7 @@
 			)
 		)
 		(property "Value" "ADG714"
-			(at 207.01 100.965 0)
+			(at 183.515 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3285,7 +3285,7 @@
 			)
 		)
 		(property "Footprint" "Package_SO:TSSOP-24_4.4x7.8mm_P0.65mm"
-			(at 201.93 101.6 0)
+			(at 182.88 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3294,7 +3294,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 201.93 101.6 0)
+			(at 182.88 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3303,7 +3303,7 @@
 			)
 		)
 		(property "Description" "Analog serial controlled switch array"
-			(at 201.93 101.6 0)
+			(at 182.88 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3312,7 +3312,7 @@
 			)
 		)
 		(property "Availability" ""
-			(at 201.93 101.6 0)
+			(at 182.88 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3321,7 +3321,7 @@
 			)
 		)
 		(property "Check_prices" ""
-			(at 201.93 101.6 0)
+			(at 182.88 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3330,7 +3330,7 @@
 			)
 		)
 		(property "Description_1" ""
-			(at 201.93 101.6 0)
+			(at 182.88 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3339,7 +3339,7 @@
 			)
 		)
 		(property "MF" ""
-			(at 201.93 101.6 0)
+			(at 182.88 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3348,7 +3348,7 @@
 			)
 		)
 		(property "MP" ""
-			(at 201.93 101.6 0)
+			(at 182.88 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3357,7 +3357,7 @@
 			)
 		)
 		(property "Package" ""
-			(at 201.93 101.6 0)
+			(at 182.88 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3366,7 +3366,7 @@
 			)
 		)
 		(property "Price" ""
-			(at 201.93 101.6 0)
+			(at 182.88 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3375,7 +3375,7 @@
 			)
 		)
 		(property "SnapEDA_Link" ""
-			(at 201.93 101.6 0)
+			(at 182.88 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3466,16 +3466,16 @@
 	)
 	(symbol
 		(lib_id "Analog_Switch:ADG714")
-		(at 177.8 68.58 0)
+		(at 176.53 58.42 180)
 		(unit 8)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "362eadd9-2b1b-4c22-91b0-702460abeeda")
+		(uuid "2d1d23de-0b3f-4b5e-8b4c-b34af56d4108")
 		(property "Reference" "U3"
-			(at 177.8 72.898 0)
+			(at 176.53 54.102 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3484,7 +3484,7 @@
 			)
 		)
 		(property "Value" "ADG714"
-			(at 177.165 63.5 0)
+			(at 177.165 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3492,7 +3492,7 @@
 			)
 		)
 		(property "Footprint" "Package_SO:TSSOP-24_4.4x7.8mm_P0.65mm"
-			(at 177.8 68.58 0)
+			(at 176.53 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3501,7 +3501,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 177.8 68.58 0)
+			(at 176.53 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3510,7 +3510,7 @@
 			)
 		)
 		(property "Description" "Analog serial controlled switch array"
-			(at 177.8 68.58 0)
+			(at 176.53 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3519,7 +3519,7 @@
 			)
 		)
 		(property "Availability" ""
-			(at 177.8 68.58 0)
+			(at 176.53 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3528,7 +3528,7 @@
 			)
 		)
 		(property "Check_prices" ""
-			(at 177.8 68.58 0)
+			(at 176.53 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3537,7 +3537,7 @@
 			)
 		)
 		(property "Description_1" ""
-			(at 177.8 68.58 0)
+			(at 176.53 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3546,7 +3546,7 @@
 			)
 		)
 		(property "MF" ""
-			(at 177.8 68.58 0)
+			(at 176.53 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3555,7 +3555,7 @@
 			)
 		)
 		(property "MP" ""
-			(at 177.8 68.58 0)
+			(at 176.53 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3564,7 +3564,7 @@
 			)
 		)
 		(property "Package" ""
-			(at 177.8 68.58 0)
+			(at 176.53 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3573,7 +3573,7 @@
 			)
 		)
 		(property "Price" ""
-			(at 177.8 68.58 0)
+			(at 176.53 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3582,7 +3582,7 @@
 			)
 		)
 		(property "SnapEDA_Link" ""
-			(at 177.8 68.58 0)
+			(at 176.53 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3630,10 +3630,10 @@
 			(uuid "b8cbf553-9995-4cee-aa05-1082e90169cb")
 		)
 		(pin "19"
-			(uuid "74c95478-aaf8-449c-a4e7-5ded113a6873")
+			(uuid "64b6e7e8-ff5f-480d-99b1-02b5554e9900")
 		)
 		(pin "20"
-			(uuid "530a7b92-0432-4693-9b51-5a227c31dd86")
+			(uuid "d6fd2c12-6f54-40c0-bfec-2250730c5c9b")
 		)
 		(pin "22"
 			(uuid "83166d47-596b-4c5c-aaf3-0c5d4e37e555")
@@ -3673,7 +3673,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 203.2 116.84 180)
+		(at 157.48 125.73 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3681,7 +3681,7 @@
 		(dnp no)
 		(uuid "3eebc105-0e30-43c2-ba4f-47f417d2f6a2")
 		(property "Reference" "R26"
-			(at 208.28 118.11 0)
+			(at 152.4 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3689,8 +3689,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "348"
-			(at 208.28 115.57 0)
+		(property "Value" "348Ω"
+			(at 152.4 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3699,7 +3699,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 204.978 116.84 90)
+			(at 155.702 125.73 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3708,7 +3708,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 203.2 116.84 0)
+			(at 157.48 125.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3717,7 +3717,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 203.2 116.84 0)
+			(at 157.48 125.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3742,7 +3742,7 @@
 	)
 	(symbol
 		(lib_id "Analog_Switch:ADG714")
-		(at 149.86 100.33 90)
+		(at 156.21 110.49 270)
 		(unit 3)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3750,7 +3750,7 @@
 		(dnp no)
 		(uuid "4399ee9a-500f-4c68-a382-93c1146cb7b6")
 		(property "Reference" "U1"
-			(at 154.178 100.33 0)
+			(at 151.892 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3759,7 +3759,7 @@
 			)
 		)
 		(property "Value" "ADG714"
-			(at 144.272 97.536 0)
+			(at 161.798 113.284 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3768,7 +3768,7 @@
 			)
 		)
 		(property "Footprint" "Package_SO:TSSOP-24_4.4x7.8mm_P0.65mm"
-			(at 149.86 100.33 0)
+			(at 156.21 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3777,7 +3777,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 149.86 100.33 0)
+			(at 156.21 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3786,7 +3786,7 @@
 			)
 		)
 		(property "Description" "Analog serial controlled switch array"
-			(at 149.86 100.33 0)
+			(at 156.21 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3795,7 +3795,7 @@
 			)
 		)
 		(property "Availability" ""
-			(at 149.86 100.33 0)
+			(at 156.21 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3804,7 +3804,7 @@
 			)
 		)
 		(property "Check_prices" ""
-			(at 149.86 100.33 0)
+			(at 156.21 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3813,7 +3813,7 @@
 			)
 		)
 		(property "Description_1" ""
-			(at 149.86 100.33 0)
+			(at 156.21 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3822,7 +3822,7 @@
 			)
 		)
 		(property "MF" ""
-			(at 149.86 100.33 0)
+			(at 156.21 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3831,7 +3831,7 @@
 			)
 		)
 		(property "MP" ""
-			(at 149.86 100.33 0)
+			(at 156.21 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3840,7 +3840,7 @@
 			)
 		)
 		(property "Package" ""
-			(at 149.86 100.33 0)
+			(at 156.21 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3849,7 +3849,7 @@
 			)
 		)
 		(property "Price" ""
-			(at 149.86 100.33 0)
+			(at 156.21 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3858,7 +3858,7 @@
 			)
 		)
 		(property "SnapEDA_Link" ""
-			(at 149.86 100.33 0)
+			(at 156.21 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3975,7 +3975,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "WAGO:CONN5_233-505_WAG"
+		(property "Footprint" "TerminalBlock_WAGO:TerminalBlock_WAGO_233-506_2x06_P2.54mm"
 			(at 71.12 92.71 0)
 			(effects
 				(font
@@ -4031,7 +4031,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 193.04 128.27 270)
+		(at 167.64 90.17 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4039,7 +4039,7 @@
 		(dnp no)
 		(uuid "766a70e6-05f7-425c-9e45-975a056d2294")
 		(property "Reference" "R25"
-			(at 194.31 123.19 0)
+			(at 166.37 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4047,8 +4047,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "348"
-			(at 191.77 123.19 0)
+		(property "Value" "348Ω"
+			(at 168.91 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4057,7 +4057,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 193.04 126.492 90)
+			(at 167.64 91.948 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4066,7 +4066,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 193.04 128.27 0)
+			(at 167.64 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4075,7 +4075,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 193.04 128.27 0)
+			(at 167.64 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4099,215 +4099,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Analog_Switch:ADG714")
-		(at 177.8 60.96 0)
-		(unit 7)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "8fbb9b0e-fe77-4a53-aa6b-a51494192692")
-		(property "Reference" "U3"
-			(at 177.8 65.278 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "ADG714"
-			(at 177.165 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_SO:TSSOP-24_4.4x7.8mm_P0.65mm"
-			(at 177.8 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 177.8 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Analog serial controlled switch array"
-			(at 177.8 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Availability" ""
-			(at 177.8 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Check_prices" ""
-			(at 177.8 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description_1" ""
-			(at 177.8 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MF" ""
-			(at 177.8 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MP" ""
-			(at 177.8 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" ""
-			(at 177.8 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" ""
-			(at 177.8 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "SnapEDA_Link" ""
-			(at 177.8 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "6"
-			(uuid "015ab457-7c07-4f99-8e3f-6037e3f377b9")
-		)
-		(pin "7"
-			(uuid "fbd658d6-39bf-4886-8948-59ec53118ac1")
-		)
-		(pin "8"
-			(uuid "96df26a9-9a81-4448-8b80-a6a5b20b3242")
-		)
-		(pin "9"
-			(uuid "980dbc6a-3f3f-49a4-b23d-1646576eaaa0")
-		)
-		(pin "10"
-			(uuid "6b1ae7df-8d00-4a41-99f3-3eee5826a9c2")
-		)
-		(pin "11"
-			(uuid "9ccc3dbf-57d9-4134-b8e8-90a435ad3529")
-		)
-		(pin "12"
-			(uuid "38e17a5f-3ed9-4eaf-8770-55d9a3c52fa0")
-		)
-		(pin "13"
-			(uuid "745a2a7b-0862-472f-951b-2032cd68cda9")
-		)
-		(pin "14"
-			(uuid "2539e530-abbd-4998-a52c-0a5142ab1282")
-		)
-		(pin "15"
-			(uuid "a90c6383-ccc3-480a-8e41-473a6f0f40fc")
-		)
-		(pin "16"
-			(uuid "0c44b7d5-9853-4369-a87f-ef8973df7213")
-		)
-		(pin "17"
-			(uuid "9abcaa47-6ba8-4240-afca-a3160c012f40")
-		)
-		(pin "18"
-			(uuid "d338c885-56c2-450f-b7d7-4ebe2243dad4")
-		)
-		(pin "19"
-			(uuid "dbcc96a2-2c33-4790-ac88-bc1a26d6d837")
-		)
-		(pin "20"
-			(uuid "e8bba1d3-dc50-4842-b662-b39271ee6344")
-		)
-		(pin "22"
-			(uuid "83166d47-596b-4c5c-aaf3-0c5d4e37e558")
-		)
-		(pin "1"
-			(uuid "980b04da-cc0f-4806-abf6-8a3d44742e2d")
-		)
-		(pin "3"
-			(uuid "6103afac-2702-4f1e-ad07-b6e99a53cada")
-		)
-		(pin "2"
-			(uuid "82e99680-9d3a-4459-a489-e1a9e3fbbacd")
-		)
-		(pin "21"
-			(uuid "4bccdfc2-7fb6-4a39-bdf2-a85476c794ec")
-		)
-		(pin "4"
-			(uuid "f34cf852-6347-4471-8977-b2148ab505be")
-		)
-		(pin "24"
-			(uuid "7ae2cea3-6093-44c4-9b34-02ecf45f386d")
-		)
-		(pin "23"
-			(uuid "ef82ffb9-58b1-4959-9c5c-916613fc9664")
-		)
-		(pin "5"
-			(uuid "0f5aacec-7c87-4299-99c7-f543e2f94c23")
-		)
-		(instances
-			(project "me_gizmo"
-				(path "/5ed15c8a-a75a-41fd-bd31-0cc03d775f55/6041856f-0485-4d67-a25f-c6f3f7a3f1cd/d342d81d-0037-48c8-ba0e-1c491debc965"
-					(reference "U3")
-					(unit 7)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
-		(at 148.59 116.84 0)
+		(at 212.09 101.6 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4315,7 +4108,7 @@
 		(dnp no)
 		(uuid "aac240e0-4bab-4bb6-8aca-288748106ccf")
 		(property "Reference" "R22"
-			(at 143.51 115.57 0)
+			(at 217.17 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4323,8 +4116,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "348"
-			(at 143.51 118.11 0)
+		(property "Value" "348Ω"
+			(at 217.17 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4333,7 +4126,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 146.812 116.84 90)
+			(at 213.868 101.6 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4342,7 +4135,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 148.59 116.84 0)
+			(at 212.09 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4351,7 +4144,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 148.59 116.84 0)
+			(at 212.09 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4441,8 +4234,215 @@
 		)
 	)
 	(symbol
+		(lib_id "Analog_Switch:ADG714")
+		(at 176.53 66.04 180)
+		(unit 7)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d31fb590-5e9a-43a3-9ead-45b196a59e59")
+		(property "Reference" "U3"
+			(at 176.53 61.722 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "ADG714"
+			(at 177.165 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:TSSOP-24_4.4x7.8mm_P0.65mm"
+			(at 176.53 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 176.53 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Analog serial controlled switch array"
+			(at 176.53 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Availability" ""
+			(at 176.53 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 176.53 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 176.53 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 176.53 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 176.53 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 176.53 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 176.53 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 176.53 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "6"
+			(uuid "015ab457-7c07-4f99-8e3f-6037e3f377bb")
+		)
+		(pin "7"
+			(uuid "fbd658d6-39bf-4886-8948-59ec53118ac3")
+		)
+		(pin "8"
+			(uuid "96df26a9-9a81-4448-8b80-a6a5b20b3244")
+		)
+		(pin "9"
+			(uuid "980dbc6a-3f3f-49a4-b23d-1646576eaaa1")
+		)
+		(pin "10"
+			(uuid "6b1ae7df-8d00-4a41-99f3-3eee5826a9c3")
+		)
+		(pin "11"
+			(uuid "9ccc3dbf-57d9-4134-b8e8-90a435ad352b")
+		)
+		(pin "12"
+			(uuid "38e17a5f-3ed9-4eaf-8770-55d9a3c52fa2")
+		)
+		(pin "13"
+			(uuid "745a2a7b-0862-472f-951b-2032cd68cdab")
+		)
+		(pin "14"
+			(uuid "2539e530-abbd-4998-a52c-0a5142ab1284")
+		)
+		(pin "15"
+			(uuid "a90c6383-ccc3-480a-8e41-473a6f0f40fe")
+		)
+		(pin "16"
+			(uuid "0c44b7d5-9853-4369-a87f-ef8973df7215")
+		)
+		(pin "17"
+			(uuid "9787051c-5d18-49a5-b00d-6daa2865ea00")
+		)
+		(pin "18"
+			(uuid "02b70cfd-c7af-497e-aec4-2994e0a399cf")
+		)
+		(pin "19"
+			(uuid "dbcc96a2-2c33-4790-ac88-bc1a26d6d839")
+		)
+		(pin "20"
+			(uuid "e8bba1d3-dc50-4842-b662-b39271ee6346")
+		)
+		(pin "22"
+			(uuid "83166d47-596b-4c5c-aaf3-0c5d4e37e55a")
+		)
+		(pin "1"
+			(uuid "980b04da-cc0f-4806-abf6-8a3d44742e2f")
+		)
+		(pin "3"
+			(uuid "6103afac-2702-4f1e-ad07-b6e99a53cadc")
+		)
+		(pin "2"
+			(uuid "82e99680-9d3a-4459-a489-e1a9e3fbbacf")
+		)
+		(pin "21"
+			(uuid "4bccdfc2-7fb6-4a39-bdf2-a85476c794ee")
+		)
+		(pin "4"
+			(uuid "f34cf852-6347-4471-8977-b2148ab505c0")
+		)
+		(pin "24"
+			(uuid "7ae2cea3-6093-44c4-9b34-02ecf45f386f")
+		)
+		(pin "23"
+			(uuid "ef82ffb9-58b1-4959-9c5c-916613fc9666")
+		)
+		(pin "5"
+			(uuid "0f5aacec-7c87-4299-99c7-f543e2f94c25")
+		)
+		(instances
+			(project "me_gizmo"
+				(path "/5ed15c8a-a75a-41fd-bd31-0cc03d775f55/6041856f-0485-4d67-a25f-c6f3f7a3f1cd/d342d81d-0037-48c8-ba0e-1c491debc965"
+					(reference "U3")
+					(unit 7)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
-		(at 157.48 116.84 0)
+		(at 203.2 101.6 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4450,7 +4450,7 @@
 		(dnp no)
 		(uuid "ec880552-889e-4ed6-b914-604dd0043e8e")
 		(property "Reference" "R23"
-			(at 159.385 115.57 0)
+			(at 201.295 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4458,8 +4458,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "118"
-			(at 159.385 118.11 0)
+		(property "Value" "118Ω"
+			(at 201.295 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4468,7 +4468,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 155.702 116.84 90)
+			(at 204.978 101.6 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4477,7 +4477,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 157.48 116.84 0)
+			(at 203.2 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4486,7 +4486,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 157.48 116.84 0)
+			(at 203.2 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4511,7 +4511,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 210.82 116.84 0)
+		(at 149.86 125.73 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4519,7 +4519,7 @@
 		(dnp no)
 		(uuid "f37cbfe4-a0a3-4e10-b88e-0738d01ae68f")
 		(property "Reference" "R27"
-			(at 212.725 115.57 0)
+			(at 147.955 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4527,8 +4527,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "118"
-			(at 212.725 118.11 0)
+		(property "Value" "118Ω"
+			(at 147.955 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4537,7 +4537,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 209.042 116.84 90)
+			(at 151.638 125.73 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4546,7 +4546,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 210.82 116.84 0)
+			(at 149.86 125.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4555,7 +4555,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 210.82 116.84 0)
+			(at 149.86 125.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4580,16 +4580,15 @@
 	)
 	(symbol
 		(lib_id "Analog_Switch:ADG714")
-		(at 209.55 101.6 270)
+		(at 213.36 116.84 90)
 		(unit 2)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "f72eba78-1e45-4967-b75b-cbdc8f8b34a3")
 		(property "Reference" "U4"
-			(at 205.232 101.6 0)
+			(at 217.678 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4598,15 +4597,16 @@
 			)
 		)
 		(property "Value" "ADG714"
-			(at 215.265 100.965 0)
+			(at 215.138 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify right)
 			)
 		)
 		(property "Footprint" "Package_SO:TSSOP-24_4.4x7.8mm_P0.65mm"
-			(at 209.55 101.6 0)
+			(at 213.36 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4615,7 +4615,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 209.55 101.6 0)
+			(at 213.36 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4624,7 +4624,7 @@
 			)
 		)
 		(property "Description" "Analog serial controlled switch array"
-			(at 209.55 101.6 0)
+			(at 213.36 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4633,7 +4633,7 @@
 			)
 		)
 		(property "Availability" ""
-			(at 209.55 101.6 0)
+			(at 213.36 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4642,7 +4642,7 @@
 			)
 		)
 		(property "Check_prices" ""
-			(at 209.55 101.6 0)
+			(at 213.36 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4651,7 +4651,7 @@
 			)
 		)
 		(property "Description_1" ""
-			(at 209.55 101.6 0)
+			(at 213.36 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4660,7 +4660,7 @@
 			)
 		)
 		(property "MF" ""
-			(at 209.55 101.6 0)
+			(at 213.36 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4669,7 +4669,7 @@
 			)
 		)
 		(property "MP" ""
-			(at 209.55 101.6 0)
+			(at 213.36 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4678,7 +4678,7 @@
 			)
 		)
 		(property "Package" ""
-			(at 209.55 101.6 0)
+			(at 213.36 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4687,7 +4687,7 @@
 			)
 		)
 		(property "Price" ""
-			(at 209.55 101.6 0)
+			(at 213.36 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4696,7 +4696,7 @@
 			)
 		)
 		(property "SnapEDA_Link" ""
-			(at 209.55 101.6 0)
+			(at 213.36 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4787,7 +4787,7 @@
 	)
 	(symbol
 		(lib_id "Analog_Switch:ADG714")
-		(at 158.75 100.33 90)
+		(at 148.59 110.49 270)
 		(unit 4)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4795,7 +4795,7 @@
 		(dnp no)
 		(uuid "fe3b5ef6-9996-420f-a076-b3671e5062d2")
 		(property "Reference" "U1"
-			(at 163.068 100.33 0)
+			(at 144.272 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4804,7 +4804,7 @@
 			)
 		)
 		(property "Value" "ADG714"
-			(at 153.162 98.298 0)
+			(at 154.178 112.522 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4813,7 +4813,7 @@
 			)
 		)
 		(property "Footprint" "Package_SO:TSSOP-24_4.4x7.8mm_P0.65mm"
-			(at 158.75 100.33 0)
+			(at 148.59 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4822,7 +4822,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 158.75 100.33 0)
+			(at 148.59 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4831,7 +4831,7 @@
 			)
 		)
 		(property "Description" "Analog serial controlled switch array"
-			(at 158.75 100.33 0)
+			(at 148.59 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4840,7 +4840,7 @@
 			)
 		)
 		(property "Availability" ""
-			(at 158.75 100.33 0)
+			(at 148.59 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4849,7 +4849,7 @@
 			)
 		)
 		(property "Check_prices" ""
-			(at 158.75 100.33 0)
+			(at 148.59 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4858,7 +4858,7 @@
 			)
 		)
 		(property "Description_1" ""
-			(at 158.75 100.33 0)
+			(at 148.59 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4867,7 +4867,7 @@
 			)
 		)
 		(property "MF" ""
-			(at 158.75 100.33 0)
+			(at 148.59 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4876,7 +4876,7 @@
 			)
 		)
 		(property "MP" ""
-			(at 158.75 100.33 0)
+			(at 148.59 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4885,7 +4885,7 @@
 			)
 		)
 		(property "Package" ""
-			(at 158.75 100.33 0)
+			(at 148.59 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4894,7 +4894,7 @@
 			)
 		)
 		(property "Price" ""
-			(at 158.75 100.33 0)
+			(at 148.59 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4903,7 +4903,7 @@
 			)
 		)
 		(property "SnapEDA_Link" ""
-			(at 158.75 100.33 0)
+			(at 148.59 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4912,19 +4912,19 @@
 			)
 		)
 		(pin "6"
-			(uuid "015ab457-7c07-4f99-8e3f-6037e3f377bc")
+			(uuid "015ab457-7c07-4f99-8e3f-6037e3f377bd")
 		)
 		(pin "7"
-			(uuid "fbd658d6-39bf-4886-8948-59ec53118ac4")
+			(uuid "fbd658d6-39bf-4886-8948-59ec53118ac5")
 		)
 		(pin "8"
-			(uuid "96df26a9-9a81-4448-8b80-a6a5b20b3245")
+			(uuid "96df26a9-9a81-4448-8b80-a6a5b20b3246")
 		)
 		(pin "9"
-			(uuid "980dbc6a-3f3f-49a4-b23d-1646576eaaa3")
+			(uuid "980dbc6a-3f3f-49a4-b23d-1646576eaaa5")
 		)
 		(pin "10"
-			(uuid "6b1ae7df-8d00-4a41-99f3-3eee5826a9c5")
+			(uuid "6b1ae7df-8d00-4a41-99f3-3eee5826a9c7")
 		)
 		(pin "11"
 			(uuid "f4e916fe-e6f0-4e0e-a598-83308918df51")
@@ -4933,55 +4933,55 @@
 			(uuid "5090259a-1555-46ac-8526-1d71dd2c50c1")
 		)
 		(pin "13"
-			(uuid "745a2a7b-0862-472f-951b-2032cd68cdac")
+			(uuid "745a2a7b-0862-472f-951b-2032cd68cdad")
 		)
 		(pin "14"
-			(uuid "2539e530-abbd-4998-a52c-0a5142ab1285")
+			(uuid "2539e530-abbd-4998-a52c-0a5142ab1286")
 		)
 		(pin "15"
-			(uuid "a90c6383-ccc3-480a-8e41-473a6f0f40ff")
+			(uuid "a90c6383-ccc3-480a-8e41-473a6f0f4101")
 		)
 		(pin "16"
-			(uuid "0c44b7d5-9853-4369-a87f-ef8973df7216")
+			(uuid "0c44b7d5-9853-4369-a87f-ef8973df7218")
 		)
 		(pin "17"
-			(uuid "2c8b61e9-2fc0-4a78-bbaa-0e65113eb94c")
+			(uuid "2c8b61e9-2fc0-4a78-bbaa-0e65113eb94d")
 		)
 		(pin "18"
-			(uuid "b8cbf553-9995-4cee-aa05-1082e90169d1")
+			(uuid "b8cbf553-9995-4cee-aa05-1082e90169d2")
 		)
 		(pin "19"
-			(uuid "dbcc96a2-2c33-4790-ac88-bc1a26d6d83a")
+			(uuid "dbcc96a2-2c33-4790-ac88-bc1a26d6d83b")
 		)
 		(pin "20"
-			(uuid "e8bba1d3-dc50-4842-b662-b39271ee6347")
+			(uuid "e8bba1d3-dc50-4842-b662-b39271ee6348")
 		)
 		(pin "22"
-			(uuid "83166d47-596b-4c5c-aaf3-0c5d4e37e55b")
+			(uuid "83166d47-596b-4c5c-aaf3-0c5d4e37e55d")
 		)
 		(pin "1"
-			(uuid "980b04da-cc0f-4806-abf6-8a3d44742e30")
+			(uuid "980b04da-cc0f-4806-abf6-8a3d44742e32")
 		)
 		(pin "3"
-			(uuid "6103afac-2702-4f1e-ad07-b6e99a53cadd")
+			(uuid "6103afac-2702-4f1e-ad07-b6e99a53cadf")
 		)
 		(pin "2"
-			(uuid "82e99680-9d3a-4459-a489-e1a9e3fbbad0")
+			(uuid "82e99680-9d3a-4459-a489-e1a9e3fbbad2")
 		)
 		(pin "21"
-			(uuid "4bccdfc2-7fb6-4a39-bdf2-a85476c794ef")
+			(uuid "4bccdfc2-7fb6-4a39-bdf2-a85476c794f1")
 		)
 		(pin "4"
-			(uuid "f34cf852-6347-4471-8977-b2148ab505c1")
+			(uuid "f34cf852-6347-4471-8977-b2148ab505c3")
 		)
 		(pin "24"
-			(uuid "7ae2cea3-6093-44c4-9b34-02ecf45f3870")
+			(uuid "7ae2cea3-6093-44c4-9b34-02ecf45f3872")
 		)
 		(pin "23"
-			(uuid "ef82ffb9-58b1-4959-9c5c-916613fc9667")
+			(uuid "ef82ffb9-58b1-4959-9c5c-916613fc9669")
 		)
 		(pin "5"
-			(uuid "0f5aacec-7c87-4299-99c7-f543e2f94c26")
+			(uuid "0f5aacec-7c87-4299-99c7-f543e2f94c27")
 		)
 		(instances
 			(project "me_gizmo"

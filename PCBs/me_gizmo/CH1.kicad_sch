@@ -8179,7 +8179,7 @@
 		(at 151.13 119.38)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "34f01461-edd4-4531-be79-b6d2652d398b")
+		(uuid "0daac3e6-3764-4007-b362-2d0c631b0869")
 	)
 	(junction
 		(at 198.12 119.38)
@@ -8395,7 +8395,7 @@
 		)
 		(uuid "aeecae2a-a03b-400e-8745-d20e8af17fb2")
 	)
-	(label "ADC1+"
+	(label "ADC1-"
 		(at 66.04 100.33 180)
 		(effects
 			(font
@@ -8489,7 +8489,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "118"
+		(property "Value" "118Ω"
 			(at 145.415 116.84 0)
 			(effects
 				(font
@@ -8542,16 +8542,15 @@
 	)
 	(symbol
 		(lib_id "Analog_Switch:ADG714")
-		(at 162.56 129.54 0)
-		(mirror y)
-		(unit 6)
+		(at 162.56 127 180)
+		(unit 7)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "15f705dc-1c55-4fe4-b99f-24247d5461e6")
+		(uuid "412b6f6c-0601-4b28-b078-8a7f75ae5784")
 		(property "Reference" "U2"
-			(at 162.56 133.858 0)
+			(at 162.56 122.682 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8560,15 +8559,16 @@
 			)
 		)
 		(property "Value" "ADG714"
-			(at 163.195 124.46 0)
+			(at 166.37 132.842 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" "Package_SO:TSSOP-24_4.4x7.8mm_P0.65mm"
-			(at 162.56 129.54 0)
+			(at 162.56 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8577,7 +8577,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 162.56 129.54 0)
+			(at 162.56 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8586,7 +8586,7 @@
 			)
 		)
 		(property "Description" "Analog serial controlled switch array"
-			(at 162.56 129.54 0)
+			(at 162.56 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8595,7 +8595,7 @@
 			)
 		)
 		(property "Availability" ""
-			(at 162.56 129.54 0)
+			(at 162.56 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8604,7 +8604,7 @@
 			)
 		)
 		(property "Check_prices" ""
-			(at 162.56 129.54 0)
+			(at 162.56 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8613,7 +8613,7 @@
 			)
 		)
 		(property "Description_1" ""
-			(at 162.56 129.54 0)
+			(at 162.56 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8622,7 +8622,7 @@
 			)
 		)
 		(property "MF" ""
-			(at 162.56 129.54 0)
+			(at 162.56 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8631,7 +8631,7 @@
 			)
 		)
 		(property "MP" ""
-			(at 162.56 129.54 0)
+			(at 162.56 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8640,7 +8640,7 @@
 			)
 		)
 		(property "Package" ""
-			(at 162.56 129.54 0)
+			(at 162.56 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8649,7 +8649,7 @@
 			)
 		)
 		(property "Price" ""
-			(at 162.56 129.54 0)
+			(at 162.56 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8658,7 +8658,7 @@
 			)
 		)
 		(property "SnapEDA_Link" ""
-			(at 162.56 129.54 0)
+			(at 162.56 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8667,289 +8667,82 @@
 			)
 		)
 		(pin "6"
-			(uuid "015ab457-7c07-4f99-8e3f-6037e3f377c8")
+			(uuid "015ab457-7c07-4f99-8e3f-6037e3f377c2")
 		)
 		(pin "7"
-			(uuid "fbd658d6-39bf-4886-8948-59ec53118acf")
+			(uuid "fbd658d6-39bf-4886-8948-59ec53118aca")
 		)
 		(pin "8"
-			(uuid "96df26a9-9a81-4448-8b80-a6a5b20b3250")
+			(uuid "96df26a9-9a81-4448-8b80-a6a5b20b324b")
 		)
 		(pin "9"
-			(uuid "980dbc6a-3f3f-49a4-b23d-1646576eaaae")
+			(uuid "980dbc6a-3f3f-49a4-b23d-1646576eaaa9")
 		)
 		(pin "10"
-			(uuid "6b1ae7df-8d00-4a41-99f3-3eee5826a9d0")
+			(uuid "6b1ae7df-8d00-4a41-99f3-3eee5826a9cb")
 		)
 		(pin "11"
-			(uuid "9ccc3dbf-57d9-4134-b8e8-90a435ad3538")
+			(uuid "9ccc3dbf-57d9-4134-b8e8-90a435ad3533")
 		)
 		(pin "12"
-			(uuid "38e17a5f-3ed9-4eaf-8770-55d9a3c52faf")
+			(uuid "38e17a5f-3ed9-4eaf-8770-55d9a3c52faa")
 		)
 		(pin "13"
-			(uuid "745a2a7b-0862-472f-951b-2032cd68cdb9")
+			(uuid "745a2a7b-0862-472f-951b-2032cd68cdb3")
 		)
 		(pin "14"
-			(uuid "2539e530-abbd-4998-a52c-0a5142ab1292")
+			(uuid "2539e530-abbd-4998-a52c-0a5142ab128c")
 		)
 		(pin "15"
-			(uuid "ec23b0c5-73a4-482a-a408-ddd7294ffa24")
+			(uuid "a90c6383-ccc3-480a-8e41-473a6f0f4106")
 		)
 		(pin "16"
-			(uuid "04b52ec8-fd24-40cc-9271-a4f5238a12bc")
+			(uuid "0c44b7d5-9853-4369-a87f-ef8973df721d")
 		)
 		(pin "17"
-			(uuid "2c8b61e9-2fc0-4a78-bbaa-0e65113eb957")
+			(uuid "80791622-61af-456c-bbbc-bec9e7138012")
 		)
 		(pin "18"
-			(uuid "b8cbf553-9995-4cee-aa05-1082e90169dc")
+			(uuid "b1c7ef89-278d-4380-b2f7-785383bbd434")
 		)
 		(pin "19"
-			(uuid "dbcc96a2-2c33-4790-ac88-bc1a26d6d847")
+			(uuid "dbcc96a2-2c33-4790-ac88-bc1a26d6d842")
 		)
 		(pin "20"
-			(uuid "e8bba1d3-dc50-4842-b662-b39271ee6354")
+			(uuid "e8bba1d3-dc50-4842-b662-b39271ee634f")
 		)
 		(pin "22"
-			(uuid "83166d47-596b-4c5c-aaf3-0c5d4e37e566")
+			(uuid "83166d47-596b-4c5c-aaf3-0c5d4e37e561")
 		)
 		(pin "1"
-			(uuid "980b04da-cc0f-4806-abf6-8a3d44742e3b")
+			(uuid "980b04da-cc0f-4806-abf6-8a3d44742e36")
 		)
 		(pin "3"
-			(uuid "6103afac-2702-4f1e-ad07-b6e99a53cae8")
+			(uuid "6103afac-2702-4f1e-ad07-b6e99a53cae3")
 		)
 		(pin "2"
-			(uuid "82e99680-9d3a-4459-a489-e1a9e3fbbadb")
+			(uuid "82e99680-9d3a-4459-a489-e1a9e3fbbad6")
 		)
 		(pin "21"
-			(uuid "4bccdfc2-7fb6-4a39-bdf2-a85476c794fa")
+			(uuid "4bccdfc2-7fb6-4a39-bdf2-a85476c794f5")
 		)
 		(pin "4"
-			(uuid "f34cf852-6347-4471-8977-b2148ab505cc")
+			(uuid "f34cf852-6347-4471-8977-b2148ab505c7")
 		)
 		(pin "24"
-			(uuid "7ae2cea3-6093-44c4-9b34-02ecf45f387b")
+			(uuid "7ae2cea3-6093-44c4-9b34-02ecf45f3876")
 		)
 		(pin "23"
-			(uuid "ef82ffb9-58b1-4959-9c5c-916613fc9672")
+			(uuid "ef82ffb9-58b1-4959-9c5c-916613fc966d")
 		)
 		(pin "5"
-			(uuid "0f5aacec-7c87-4299-99c7-f543e2f94c32")
+			(uuid "0f5aacec-7c87-4299-99c7-f543e2f94c2c")
 		)
 		(instances
 			(project "me_gizmo"
 				(path "/5ed15c8a-a75a-41fd-bd31-0cc03d775f55/6041856f-0485-4d67-a25f-c6f3f7a3f1cd/39d8a50c-debb-4b82-966b-43f84108d27d"
 					(reference "U2")
-					(unit 6)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Analog_Switch:ADG714")
-		(at 163.83 120.65 0)
-		(unit 3)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "295dc462-d81a-43fe-a605-4a786ebd2340")
-		(property "Reference" "U2"
-			(at 163.83 124.968 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "ADG714"
-			(at 163.195 114.935 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_SO:TSSOP-24_4.4x7.8mm_P0.65mm"
-			(at 163.83 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 163.83 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Analog serial controlled switch array"
-			(at 163.83 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Availability" ""
-			(at 163.83 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Check_prices" ""
-			(at 163.83 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description_1" ""
-			(at 163.83 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MF" ""
-			(at 163.83 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MP" ""
-			(at 163.83 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" ""
-			(at 163.83 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" ""
-			(at 163.83 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "SnapEDA_Link" ""
-			(at 163.83 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "6"
-			(uuid "015ab457-7c07-4f99-8e3f-6037e3f377c6")
-		)
-		(pin "7"
-			(uuid "fbd658d6-39bf-4886-8948-59ec53118acd")
-		)
-		(pin "8"
-			(uuid "96df26a9-9a81-4448-8b80-a6a5b20b324e")
-		)
-		(pin "9"
-			(uuid "9e81f05e-684c-4a19-9ed7-edfbf8ed5b34")
-		)
-		(pin "10"
-			(uuid "f6742198-e1d5-4d49-86f3-c42fbfd4341d")
-		)
-		(pin "11"
-			(uuid "9ccc3dbf-57d9-4134-b8e8-90a435ad3537")
-		)
-		(pin "12"
-			(uuid "38e17a5f-3ed9-4eaf-8770-55d9a3c52fae")
-		)
-		(pin "13"
-			(uuid "745a2a7b-0862-472f-951b-2032cd68cdb7")
-		)
-		(pin "14"
-			(uuid "2539e530-abbd-4998-a52c-0a5142ab1290")
-		)
-		(pin "15"
-			(uuid "a90c6383-ccc3-480a-8e41-473a6f0f4109")
-		)
-		(pin "16"
-			(uuid "0c44b7d5-9853-4369-a87f-ef8973df7220")
-		)
-		(pin "17"
-			(uuid "2c8b61e9-2fc0-4a78-bbaa-0e65113eb955")
-		)
-		(pin "18"
-			(uuid "b8cbf553-9995-4cee-aa05-1082e90169da")
-		)
-		(pin "19"
-			(uuid "dbcc96a2-2c33-4790-ac88-bc1a26d6d845")
-		)
-		(pin "20"
-			(uuid "e8bba1d3-dc50-4842-b662-b39271ee6352")
-		)
-		(pin "22"
-			(uuid "83166d47-596b-4c5c-aaf3-0c5d4e37e564")
-		)
-		(pin "1"
-			(uuid "980b04da-cc0f-4806-abf6-8a3d44742e39")
-		)
-		(pin "3"
-			(uuid "6103afac-2702-4f1e-ad07-b6e99a53cae6")
-		)
-		(pin "2"
-			(uuid "82e99680-9d3a-4459-a489-e1a9e3fbbad9")
-		)
-		(pin "21"
-			(uuid "4bccdfc2-7fb6-4a39-bdf2-a85476c794f8")
-		)
-		(pin "4"
-			(uuid "f34cf852-6347-4471-8977-b2148ab505ca")
-		)
-		(pin "24"
-			(uuid "7ae2cea3-6093-44c4-9b34-02ecf45f3879")
-		)
-		(pin "23"
-			(uuid "ef82ffb9-58b1-4959-9c5c-916613fc9670")
-		)
-		(pin "5"
-			(uuid "0f5aacec-7c87-4299-99c7-f543e2f94c30")
-		)
-		(instances
-			(project "me_gizmo"
-				(path "/5ed15c8a-a75a-41fd-bd31-0cc03d775f55/6041856f-0485-4d67-a25f-c6f3f7a3f1cd/39d8a50c-debb-4b82-966b-43f84108d27d"
-					(reference "U2")
-					(unit 3)
+					(unit 7)
 				)
 			)
 		)
@@ -9163,6 +8956,420 @@
 		)
 	)
 	(symbol
+		(lib_id "Analog_Switch:ADG714")
+		(at 199.39 99.06 90)
+		(unit 8)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "52341c51-8c73-4a73-9a58-298cd2132409")
+		(property "Reference" "U2"
+			(at 203.708 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "ADG714"
+			(at 194.31 99.695 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:TSSOP-24_4.4x7.8mm_P0.65mm"
+			(at 199.39 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 199.39 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Analog serial controlled switch array"
+			(at 199.39 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Availability" ""
+			(at 199.39 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 199.39 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 199.39 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 199.39 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 199.39 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 199.39 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 199.39 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 199.39 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "6"
+			(uuid "015ab457-7c07-4f99-8e3f-6037e3f377c9")
+		)
+		(pin "7"
+			(uuid "fbd658d6-39bf-4886-8948-59ec53118ad0")
+		)
+		(pin "8"
+			(uuid "96df26a9-9a81-4448-8b80-a6a5b20b3251")
+		)
+		(pin "9"
+			(uuid "980dbc6a-3f3f-49a4-b23d-1646576eaaaf")
+		)
+		(pin "10"
+			(uuid "6b1ae7df-8d00-4a41-99f3-3eee5826a9d1")
+		)
+		(pin "11"
+			(uuid "9ccc3dbf-57d9-4134-b8e8-90a435ad3539")
+		)
+		(pin "12"
+			(uuid "38e17a5f-3ed9-4eaf-8770-55d9a3c52fb0")
+		)
+		(pin "13"
+			(uuid "745a2a7b-0862-472f-951b-2032cd68cdba")
+		)
+		(pin "14"
+			(uuid "2539e530-abbd-4998-a52c-0a5142ab1293")
+		)
+		(pin "15"
+			(uuid "a90c6383-ccc3-480a-8e41-473a6f0f410b")
+		)
+		(pin "16"
+			(uuid "0c44b7d5-9853-4369-a87f-ef8973df7222")
+		)
+		(pin "17"
+			(uuid "2c8b61e9-2fc0-4a78-bbaa-0e65113eb958")
+		)
+		(pin "18"
+			(uuid "b8cbf553-9995-4cee-aa05-1082e90169dd")
+		)
+		(pin "19"
+			(uuid "031a0431-7ae1-4f2d-a6fb-05d64ff923aa")
+		)
+		(pin "20"
+			(uuid "50bad33b-7384-4dd1-baaa-0065397e8e24")
+		)
+		(pin "22"
+			(uuid "83166d47-596b-4c5c-aaf3-0c5d4e37e567")
+		)
+		(pin "1"
+			(uuid "980b04da-cc0f-4806-abf6-8a3d44742e3c")
+		)
+		(pin "3"
+			(uuid "6103afac-2702-4f1e-ad07-b6e99a53cae9")
+		)
+		(pin "2"
+			(uuid "82e99680-9d3a-4459-a489-e1a9e3fbbadc")
+		)
+		(pin "21"
+			(uuid "4bccdfc2-7fb6-4a39-bdf2-a85476c794fb")
+		)
+		(pin "4"
+			(uuid "f34cf852-6347-4471-8977-b2148ab505cd")
+		)
+		(pin "24"
+			(uuid "7ae2cea3-6093-44c4-9b34-02ecf45f387c")
+		)
+		(pin "23"
+			(uuid "ef82ffb9-58b1-4959-9c5c-916613fc9673")
+		)
+		(pin "5"
+			(uuid "0f5aacec-7c87-4299-99c7-f543e2f94c33")
+		)
+		(instances
+			(project "me_gizmo"
+				(path "/5ed15c8a-a75a-41fd-bd31-0cc03d775f55/6041856f-0485-4d67-a25f-c6f3f7a3f1cd/39d8a50c-debb-4b82-966b-43f84108d27d"
+					(reference "U2")
+					(unit 8)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Analog_Switch:ADG714")
+		(at 162.56 118.11 180)
+		(unit 2)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "6d7ab8d2-c36f-418b-a9b7-b006c4885de1")
+		(property "Reference" "U2"
+			(at 162.56 113.792 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "ADG714"
+			(at 165.608 123.698 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_SO:TSSOP-24_4.4x7.8mm_P0.65mm"
+			(at 162.56 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 162.56 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Analog serial controlled switch array"
+			(at 162.56 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Availability" ""
+			(at 162.56 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 162.56 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 162.56 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 162.56 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 162.56 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 162.56 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 162.56 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 162.56 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "6"
+			(uuid "015ab457-7c07-4f99-8e3f-6037e3f377c0")
+		)
+		(pin "7"
+			(uuid "78068dcf-4f48-409a-80c9-badd4c403593")
+		)
+		(pin "8"
+			(uuid "7dc26670-743a-4c09-a728-79702bc88810")
+		)
+		(pin "9"
+			(uuid "980dbc6a-3f3f-49a4-b23d-1646576eaaa7")
+		)
+		(pin "10"
+			(uuid "6b1ae7df-8d00-4a41-99f3-3eee5826a9c9")
+		)
+		(pin "11"
+			(uuid "9ccc3dbf-57d9-4134-b8e8-90a435ad3530")
+		)
+		(pin "12"
+			(uuid "38e17a5f-3ed9-4eaf-8770-55d9a3c52fa7")
+		)
+		(pin "13"
+			(uuid "745a2a7b-0862-472f-951b-2032cd68cdb0")
+		)
+		(pin "14"
+			(uuid "2539e530-abbd-4998-a52c-0a5142ab1289")
+		)
+		(pin "15"
+			(uuid "a90c6383-ccc3-480a-8e41-473a6f0f4103")
+		)
+		(pin "16"
+			(uuid "0c44b7d5-9853-4369-a87f-ef8973df721a")
+		)
+		(pin "17"
+			(uuid "2c8b61e9-2fc0-4a78-bbaa-0e65113eb94f")
+		)
+		(pin "18"
+			(uuid "b8cbf553-9995-4cee-aa05-1082e90169d4")
+		)
+		(pin "19"
+			(uuid "dbcc96a2-2c33-4790-ac88-bc1a26d6d83f")
+		)
+		(pin "20"
+			(uuid "e8bba1d3-dc50-4842-b662-b39271ee634c")
+		)
+		(pin "22"
+			(uuid "83166d47-596b-4c5c-aaf3-0c5d4e37e55e")
+		)
+		(pin "1"
+			(uuid "980b04da-cc0f-4806-abf6-8a3d44742e33")
+		)
+		(pin "3"
+			(uuid "6103afac-2702-4f1e-ad07-b6e99a53cae0")
+		)
+		(pin "2"
+			(uuid "82e99680-9d3a-4459-a489-e1a9e3fbbad3")
+		)
+		(pin "21"
+			(uuid "4bccdfc2-7fb6-4a39-bdf2-a85476c794f2")
+		)
+		(pin "4"
+			(uuid "f34cf852-6347-4471-8977-b2148ab505c4")
+		)
+		(pin "24"
+			(uuid "7ae2cea3-6093-44c4-9b34-02ecf45f3873")
+		)
+		(pin "23"
+			(uuid "ef82ffb9-58b1-4959-9c5c-916613fc966a")
+		)
+		(pin "5"
+			(uuid "0f5aacec-7c87-4299-99c7-f543e2f94c2a")
+		)
+		(instances
+			(project "me_gizmo"
+				(path "/5ed15c8a-a75a-41fd-bd31-0cc03d775f55/6041856f-0485-4d67-a25f-c6f3f7a3f1cd/39d8a50c-debb-4b82-966b-43f84108d27d"
+					(reference "U2")
+					(unit 2)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 66.04 102.87 0)
 		(unit 1)
@@ -9230,16 +9437,16 @@
 	)
 	(symbol
 		(lib_id "Analog_Switch:ADG714")
-		(at 167.64 54.61 0)
+		(at 190.5 99.06 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "726d404f-2f8b-4a03-8b73-45138d8c914a")
-		(property "Reference" "U3"
-			(at 167.64 58.928 0)
+		(uuid "79123449-96da-4af8-ad3a-57d9736ff174")
+		(property "Reference" "U2"
+			(at 194.818 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9248,15 +9455,16 @@
 			)
 		)
 		(property "Value" "ADG714"
-			(at 167.005 48.895 0)
+			(at 191.77 99.6949 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify right)
 			)
 		)
 		(property "Footprint" "Package_SO:TSSOP-24_4.4x7.8mm_P0.65mm"
-			(at 167.64 54.61 0)
+			(at 190.5 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9265,7 +9473,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 167.64 54.61 0)
+			(at 190.5 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9274,7 +9482,7 @@
 			)
 		)
 		(property "Description" "Analog serial controlled switch array"
-			(at 167.64 54.61 0)
+			(at 190.5 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9283,7 +9491,7 @@
 			)
 		)
 		(property "Availability" ""
-			(at 167.64 54.61 0)
+			(at 190.5 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9292,7 +9500,7 @@
 			)
 		)
 		(property "Check_prices" ""
-			(at 167.64 54.61 0)
+			(at 190.5 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9301,7 +9509,7 @@
 			)
 		)
 		(property "Description_1" ""
-			(at 167.64 54.61 0)
+			(at 190.5 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9310,7 +9518,7 @@
 			)
 		)
 		(property "MF" ""
-			(at 167.64 54.61 0)
+			(at 190.5 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9319,7 +9527,7 @@
 			)
 		)
 		(property "MP" ""
-			(at 167.64 54.61 0)
+			(at 190.5 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9328,7 +9536,7 @@
 			)
 		)
 		(property "Package" ""
-			(at 167.64 54.61 0)
+			(at 190.5 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9337,7 +9545,7 @@
 			)
 		)
 		(property "Price" ""
-			(at 167.64 54.61 0)
+			(at 190.5 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9346,7 +9554,7 @@
 			)
 		)
 		(property "SnapEDA_Link" ""
-			(at 167.64 54.61 0)
+			(at 190.5 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9355,7 +9563,491 @@
 			)
 		)
 		(pin "6"
-			(uuid "0ac0d026-67ef-436f-83a7-1d0b3ac1c080")
+			(uuid "2d108f78-8f78-4f12-b7f9-d78b46cac732")
+		)
+		(pin "7"
+			(uuid "fbd658d6-39bf-4886-8948-59ec53118ac9")
+		)
+		(pin "8"
+			(uuid "96df26a9-9a81-4448-8b80-a6a5b20b324a")
+		)
+		(pin "9"
+			(uuid "980dbc6a-3f3f-49a4-b23d-1646576eaaa8")
+		)
+		(pin "10"
+			(uuid "6b1ae7df-8d00-4a41-99f3-3eee5826a9ca")
+		)
+		(pin "11"
+			(uuid "9ccc3dbf-57d9-4134-b8e8-90a435ad3532")
+		)
+		(pin "12"
+			(uuid "38e17a5f-3ed9-4eaf-8770-55d9a3c52fa9")
+		)
+		(pin "13"
+			(uuid "745a2a7b-0862-472f-951b-2032cd68cdb2")
+		)
+		(pin "14"
+			(uuid "2539e530-abbd-4998-a52c-0a5142ab128b")
+		)
+		(pin "15"
+			(uuid "a90c6383-ccc3-480a-8e41-473a6f0f4105")
+		)
+		(pin "16"
+			(uuid "0c44b7d5-9853-4369-a87f-ef8973df721c")
+		)
+		(pin "17"
+			(uuid "2c8b61e9-2fc0-4a78-bbaa-0e65113eb951")
+		)
+		(pin "18"
+			(uuid "b8cbf553-9995-4cee-aa05-1082e90169d6")
+		)
+		(pin "19"
+			(uuid "dbcc96a2-2c33-4790-ac88-bc1a26d6d841")
+		)
+		(pin "20"
+			(uuid "e8bba1d3-dc50-4842-b662-b39271ee634e")
+		)
+		(pin "22"
+			(uuid "83166d47-596b-4c5c-aaf3-0c5d4e37e560")
+		)
+		(pin "1"
+			(uuid "980b04da-cc0f-4806-abf6-8a3d44742e35")
+		)
+		(pin "3"
+			(uuid "6103afac-2702-4f1e-ad07-b6e99a53cae2")
+		)
+		(pin "2"
+			(uuid "82e99680-9d3a-4459-a489-e1a9e3fbbad5")
+		)
+		(pin "21"
+			(uuid "4bccdfc2-7fb6-4a39-bdf2-a85476c794f4")
+		)
+		(pin "4"
+			(uuid "f34cf852-6347-4471-8977-b2148ab505c6")
+		)
+		(pin "24"
+			(uuid "7ae2cea3-6093-44c4-9b34-02ecf45f3875")
+		)
+		(pin "23"
+			(uuid "ef82ffb9-58b1-4959-9c5c-916613fc966c")
+		)
+		(pin "5"
+			(uuid "93b9c8a1-48b6-45d2-a280-0d6f10d5df19")
+		)
+		(instances
+			(project "me_gizmo"
+				(path "/5ed15c8a-a75a-41fd-bd31-0cc03d775f55/6041856f-0485-4d67-a25f-c6f3f7a3f1cd/39d8a50c-debb-4b82-966b-43f84108d27d"
+					(reference "U2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 198.12 115.57 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8cb66141-dcce-4a34-9467-04a8243677ee")
+		(property "Reference" "R9"
+			(at 200.025 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "118Ω"
+			(at 200.025 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 196.342 115.57 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 198.12 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 198.12 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "87b949a3-cccd-44e4-b0c0-4de82528d4ba")
+		)
+		(pin "1"
+			(uuid "bc6da7dc-deac-4d9e-ae1c-76d0ae398e4a")
+		)
+		(instances
+			(project "me_gizmo"
+				(path "/5ed15c8a-a75a-41fd-bd31-0cc03d775f55/6041856f-0485-4d67-a25f-c6f3f7a3f1cd/39d8a50c-debb-4b82-966b-43f84108d27d"
+					(reference "R9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_name "ADG714_3")
+		(lib_id "Analog_Switch:ADG714")
+		(at 166.37 59.69 180)
+		(unit 2)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9d07704a-0630-4a92-a4a8-01d137185d03")
+		(property "Reference" "U3"
+			(at 166.37 55.372 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "ADG714"
+			(at 167.005 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:TSSOP-24_4.4x7.8mm_P0.65mm"
+			(at 166.37 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 166.37 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Analog serial controlled switch array"
+			(at 166.37 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Availability" ""
+			(at 166.37 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 166.37 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 166.37 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 166.37 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 166.37 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 166.37 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 166.37 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 166.37 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "6"
+			(uuid "015ab457-7c07-4f99-8e3f-6037e3f377b5")
+		)
+		(pin "7"
+			(uuid "81f93895-69ce-46d7-95f3-f38274839a46")
+		)
+		(pin "8"
+			(uuid "20f12aa3-138b-4317-bf1d-47339f7afd04")
+		)
+		(pin "9"
+			(uuid "980dbc6a-3f3f-49a4-b23d-1646576eaa9c")
+		)
+		(pin "10"
+			(uuid "6b1ae7df-8d00-4a41-99f3-3eee5826a9be")
+		)
+		(pin "11"
+			(uuid "9ccc3dbf-57d9-4134-b8e8-90a435ad3525")
+		)
+		(pin "12"
+			(uuid "38e17a5f-3ed9-4eaf-8770-55d9a3c52f9c")
+		)
+		(pin "13"
+			(uuid "745a2a7b-0862-472f-951b-2032cd68cda5")
+		)
+		(pin "14"
+			(uuid "2539e530-abbd-4998-a52c-0a5142ab127e")
+		)
+		(pin "15"
+			(uuid "a90c6383-ccc3-480a-8e41-473a6f0f40f8")
+		)
+		(pin "16"
+			(uuid "0c44b7d5-9853-4369-a87f-ef8973df720f")
+		)
+		(pin "17"
+			(uuid "2c8b61e9-2fc0-4a78-bbaa-0e65113eb945")
+		)
+		(pin "18"
+			(uuid "b8cbf553-9995-4cee-aa05-1082e90169ca")
+		)
+		(pin "19"
+			(uuid "dbcc96a2-2c33-4790-ac88-bc1a26d6d833")
+		)
+		(pin "20"
+			(uuid "e8bba1d3-dc50-4842-b662-b39271ee6340")
+		)
+		(pin "22"
+			(uuid "83166d47-596b-4c5c-aaf3-0c5d4e37e554")
+		)
+		(pin "1"
+			(uuid "980b04da-cc0f-4806-abf6-8a3d44742e29")
+		)
+		(pin "3"
+			(uuid "6103afac-2702-4f1e-ad07-b6e99a53cad6")
+		)
+		(pin "2"
+			(uuid "82e99680-9d3a-4459-a489-e1a9e3fbbac9")
+		)
+		(pin "21"
+			(uuid "4bccdfc2-7fb6-4a39-bdf2-a85476c794e8")
+		)
+		(pin "4"
+			(uuid "f34cf852-6347-4471-8977-b2148ab505ba")
+		)
+		(pin "24"
+			(uuid "7ae2cea3-6093-44c4-9b34-02ecf45f3869")
+		)
+		(pin "23"
+			(uuid "ef82ffb9-58b1-4959-9c5c-916613fc9660")
+		)
+		(pin "5"
+			(uuid "0f5aacec-7c87-4299-99c7-f543e2f94c1f")
+		)
+		(instances
+			(project "me_gizmo"
+				(path "/5ed15c8a-a75a-41fd-bd31-0cc03d775f55/6041856f-0485-4d67-a25f-c6f3f7a3f1cd/39d8a50c-debb-4b82-966b-43f84108d27d"
+					(reference "U3")
+					(unit 2)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Analog_Switch:ADG714")
+		(at 166.37 52.07 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9fea1047-5cad-490b-914b-8dc8d9b15835")
+		(property "Reference" "U3"
+			(at 166.37 47.752 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "ADG714"
+			(at 167.005 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:TSSOP-24_4.4x7.8mm_P0.65mm"
+			(at 166.37 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 166.37 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Analog serial controlled switch array"
+			(at 166.37 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Availability" ""
+			(at 166.37 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 166.37 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 166.37 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 166.37 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 166.37 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 166.37 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 166.37 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 166.37 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "6"
+			(uuid "87af47f7-be55-4227-b894-02eee5c9aadf")
 		)
 		(pin "7"
 			(uuid "fbd658d6-39bf-4886-8948-59ec53118ac1")
@@ -9424,288 +10116,12 @@
 			(uuid "ef82ffb9-58b1-4959-9c5c-916613fc9664")
 		)
 		(pin "5"
-			(uuid "2ad1eba4-0fd7-4973-bcf6-85c117bf9625")
+			(uuid "c7c62876-8a47-4803-8813-3e919d7105f1")
 		)
 		(instances
 			(project "me_gizmo"
 				(path "/5ed15c8a-a75a-41fd-bd31-0cc03d775f55/6041856f-0485-4d67-a25f-c6f3f7a3f1cd/39d8a50c-debb-4b82-966b-43f84108d27d"
 					(reference "U3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Analog_Switch:ADG714")
-		(at 199.39 99.06 90)
-		(unit 4)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "7a392f4b-0290-4286-a2a0-fd13da41ed49")
-		(property "Reference" "U2"
-			(at 203.708 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "ADG714"
-			(at 201.168 96.012 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Package_SO:TSSOP-24_4.4x7.8mm_P0.65mm"
-			(at 199.39 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 199.39 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Analog serial controlled switch array"
-			(at 199.39 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Availability" ""
-			(at 199.39 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Check_prices" ""
-			(at 199.39 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description_1" ""
-			(at 199.39 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MF" ""
-			(at 199.39 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MP" ""
-			(at 199.39 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" ""
-			(at 199.39 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" ""
-			(at 199.39 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "SnapEDA_Link" ""
-			(at 199.39 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "6"
-			(uuid "015ab457-7c07-4f99-8e3f-6037e3f377cc")
-		)
-		(pin "7"
-			(uuid "fbd658d6-39bf-4886-8948-59ec53118ad4")
-		)
-		(pin "8"
-			(uuid "96df26a9-9a81-4448-8b80-a6a5b20b3255")
-		)
-		(pin "9"
-			(uuid "980dbc6a-3f3f-49a4-b23d-1646576eaab3")
-		)
-		(pin "10"
-			(uuid "6b1ae7df-8d00-4a41-99f3-3eee5826a9d5")
-		)
-		(pin "11"
-			(uuid "26c7dc0a-69f9-43c8-b13a-82c4be153930")
-		)
-		(pin "12"
-			(uuid "26839544-e903-43ca-84fc-144635cc08b4")
-		)
-		(pin "13"
-			(uuid "745a2a7b-0862-472f-951b-2032cd68cdbd")
-		)
-		(pin "14"
-			(uuid "2539e530-abbd-4998-a52c-0a5142ab1296")
-		)
-		(pin "15"
-			(uuid "a90c6383-ccc3-480a-8e41-473a6f0f410f")
-		)
-		(pin "16"
-			(uuid "0c44b7d5-9853-4369-a87f-ef8973df7226")
-		)
-		(pin "17"
-			(uuid "2c8b61e9-2fc0-4a78-bbaa-0e65113eb95c")
-		)
-		(pin "18"
-			(uuid "b8cbf553-9995-4cee-aa05-1082e90169e1")
-		)
-		(pin "19"
-			(uuid "dbcc96a2-2c33-4790-ac88-bc1a26d6d84a")
-		)
-		(pin "20"
-			(uuid "e8bba1d3-dc50-4842-b662-b39271ee6357")
-		)
-		(pin "22"
-			(uuid "83166d47-596b-4c5c-aaf3-0c5d4e37e56b")
-		)
-		(pin "1"
-			(uuid "980b04da-cc0f-4806-abf6-8a3d44742e40")
-		)
-		(pin "3"
-			(uuid "6103afac-2702-4f1e-ad07-b6e99a53caed")
-		)
-		(pin "2"
-			(uuid "82e99680-9d3a-4459-a489-e1a9e3fbbae0")
-		)
-		(pin "21"
-			(uuid "4bccdfc2-7fb6-4a39-bdf2-a85476c794ff")
-		)
-		(pin "4"
-			(uuid "f34cf852-6347-4471-8977-b2148ab505d1")
-		)
-		(pin "24"
-			(uuid "7ae2cea3-6093-44c4-9b34-02ecf45f3880")
-		)
-		(pin "23"
-			(uuid "ef82ffb9-58b1-4959-9c5c-916613fc9677")
-		)
-		(pin "5"
-			(uuid "0f5aacec-7c87-4299-99c7-f543e2f94c36")
-		)
-		(instances
-			(project "me_gizmo"
-				(path "/5ed15c8a-a75a-41fd-bd31-0cc03d775f55/6041856f-0485-4d67-a25f-c6f3f7a3f1cd/39d8a50c-debb-4b82-966b-43f84108d27d"
-					(reference "U2")
-					(unit 4)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 198.12 115.57 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "8cb66141-dcce-4a34-9467-04a8243677ee")
-		(property "Reference" "R9"
-			(at 200.025 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "118"
-			(at 200.025 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 196.342 115.57 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 198.12 115.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 198.12 115.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "87b949a3-cccd-44e4-b0c0-4de82528d4ba")
-		)
-		(pin "1"
-			(uuid "bc6da7dc-deac-4d9e-ae1c-76d0ae398e4a")
-		)
-		(instances
-			(project "me_gizmo"
-				(path "/5ed15c8a-a75a-41fd-bd31-0cc03d775f55/6041856f-0485-4d67-a25f-c6f3f7a3f1cd/39d8a50c-debb-4b82-966b-43f84108d27d"
-					(reference "R9")
 					(unit 1)
 				)
 			)
@@ -9729,7 +10145,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "348"
+		(property "Value" "348Ω"
 			(at 139.7 114.3 0)
 			(effects
 				(font
@@ -9798,7 +10214,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "348"
+		(property "Value" "348Ω"
 			(at 177.8 123.19 0)
 			(effects
 				(font
@@ -9877,7 +10293,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "WAGO:CONN5_233-505_WAG"
+		(property "Footprint" "TerminalBlock_WAGO:TerminalBlock_WAGO_233-506_2x06_P2.54mm"
 			(at 71.12 95.25 0)
 			(effects
 				(font
@@ -10059,25 +10475,25 @@
 			)
 		)
 		(pin "6"
-			(uuid "015ab457-7c07-4f99-8e3f-6037e3f377b4")
+			(uuid "015ab457-7c07-4f99-8e3f-6037e3f377b6")
 		)
 		(pin "7"
-			(uuid "fbd658d6-39bf-4886-8948-59ec53118abc")
+			(uuid "fbd658d6-39bf-4886-8948-59ec53118abd")
 		)
 		(pin "8"
-			(uuid "96df26a9-9a81-4448-8b80-a6a5b20b323d")
+			(uuid "96df26a9-9a81-4448-8b80-a6a5b20b323e")
 		)
 		(pin "9"
-			(uuid "980dbc6a-3f3f-49a4-b23d-1646576eaa9b")
+			(uuid "980dbc6a-3f3f-49a4-b23d-1646576eaa9d")
 		)
 		(pin "10"
-			(uuid "6b1ae7df-8d00-4a41-99f3-3eee5826a9bd")
+			(uuid "6b1ae7df-8d00-4a41-99f3-3eee5826a9bf")
 		)
 		(pin "11"
-			(uuid "9ccc3dbf-57d9-4134-b8e8-90a435ad3524")
+			(uuid "9ccc3dbf-57d9-4134-b8e8-90a435ad3526")
 		)
 		(pin "12"
-			(uuid "38e17a5f-3ed9-4eaf-8770-55d9a3c52f9b")
+			(uuid "38e17a5f-3ed9-4eaf-8770-55d9a3c52f9d")
 		)
 		(pin "13"
 			(uuid "15df6859-9be3-4b93-85de-0c423a8f881e")
@@ -10086,263 +10502,55 @@
 			(uuid "becf4004-5760-49df-8974-653c5e612ea4")
 		)
 		(pin "15"
-			(uuid "a90c6383-ccc3-480a-8e41-473a6f0f40f7")
+			(uuid "a90c6383-ccc3-480a-8e41-473a6f0f40f9")
 		)
 		(pin "16"
-			(uuid "0c44b7d5-9853-4369-a87f-ef8973df720e")
+			(uuid "0c44b7d5-9853-4369-a87f-ef8973df7210")
 		)
 		(pin "17"
-			(uuid "2c8b61e9-2fc0-4a78-bbaa-0e65113eb944")
+			(uuid "2c8b61e9-2fc0-4a78-bbaa-0e65113eb946")
 		)
 		(pin "18"
-			(uuid "b8cbf553-9995-4cee-aa05-1082e90169c9")
+			(uuid "b8cbf553-9995-4cee-aa05-1082e90169cb")
 		)
 		(pin "19"
-			(uuid "dbcc96a2-2c33-4790-ac88-bc1a26d6d832")
+			(uuid "dbcc96a2-2c33-4790-ac88-bc1a26d6d834")
 		)
 		(pin "20"
-			(uuid "e8bba1d3-dc50-4842-b662-b39271ee633f")
+			(uuid "e8bba1d3-dc50-4842-b662-b39271ee6341")
 		)
 		(pin "22"
-			(uuid "83166d47-596b-4c5c-aaf3-0c5d4e37e553")
+			(uuid "83166d47-596b-4c5c-aaf3-0c5d4e37e555")
 		)
 		(pin "1"
-			(uuid "980b04da-cc0f-4806-abf6-8a3d44742e28")
+			(uuid "980b04da-cc0f-4806-abf6-8a3d44742e2a")
 		)
 		(pin "3"
-			(uuid "6103afac-2702-4f1e-ad07-b6e99a53cad5")
+			(uuid "6103afac-2702-4f1e-ad07-b6e99a53cad7")
 		)
 		(pin "2"
-			(uuid "82e99680-9d3a-4459-a489-e1a9e3fbbac8")
+			(uuid "82e99680-9d3a-4459-a489-e1a9e3fbbaca")
 		)
 		(pin "21"
-			(uuid "4bccdfc2-7fb6-4a39-bdf2-a85476c794e7")
+			(uuid "4bccdfc2-7fb6-4a39-bdf2-a85476c794e9")
 		)
 		(pin "4"
-			(uuid "f34cf852-6347-4471-8977-b2148ab505b9")
+			(uuid "f34cf852-6347-4471-8977-b2148ab505bb")
 		)
 		(pin "24"
-			(uuid "7ae2cea3-6093-44c4-9b34-02ecf45f3868")
+			(uuid "7ae2cea3-6093-44c4-9b34-02ecf45f386a")
 		)
 		(pin "23"
-			(uuid "ef82ffb9-58b1-4959-9c5c-916613fc965f")
+			(uuid "ef82ffb9-58b1-4959-9c5c-916613fc9661")
 		)
 		(pin "5"
-			(uuid "0f5aacec-7c87-4299-99c7-f543e2f94c1e")
+			(uuid "0f5aacec-7c87-4299-99c7-f543e2f94c20")
 		)
 		(instances
 			(project "me_gizmo"
 				(path "/5ed15c8a-a75a-41fd-bd31-0cc03d775f55/6041856f-0485-4d67-a25f-c6f3f7a3f1cd/39d8a50c-debb-4b82-966b-43f84108d27d"
 					(reference "U1")
 					(unit 5)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_name "ADG714_3")
-		(lib_id "Analog_Switch:ADG714")
-		(at 167.64 62.23 0)
-		(unit 2)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "d08c58a7-e2ae-4b2b-84ab-67438eee01fb")
-		(property "Reference" "U3"
-			(at 167.64 66.548 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "ADG714"
-			(at 167.005 56.515 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_SO:TSSOP-24_4.4x7.8mm_P0.65mm"
-			(at 167.64 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 167.64 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Analog serial controlled switch array"
-			(at 167.64 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Availability" ""
-			(at 167.64 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Check_prices" ""
-			(at 167.64 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description_1" ""
-			(at 167.64 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MF" ""
-			(at 167.64 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MP" ""
-			(at 167.64 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" ""
-			(at 167.64 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" ""
-			(at 167.64 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "SnapEDA_Link" ""
-			(at 167.64 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "6"
-			(uuid "015ab457-7c07-4f99-8e3f-6037e3f377b5")
-		)
-		(pin "7"
-			(uuid "0b9ba6df-7522-43e2-b9f8-c505cf8708ff")
-		)
-		(pin "8"
-			(uuid "e87ea115-2f64-47b4-943c-a193caec0a05")
-		)
-		(pin "9"
-			(uuid "980dbc6a-3f3f-49a4-b23d-1646576eaa9c")
-		)
-		(pin "10"
-			(uuid "6b1ae7df-8d00-4a41-99f3-3eee5826a9be")
-		)
-		(pin "11"
-			(uuid "9ccc3dbf-57d9-4134-b8e8-90a435ad3525")
-		)
-		(pin "12"
-			(uuid "38e17a5f-3ed9-4eaf-8770-55d9a3c52f9c")
-		)
-		(pin "13"
-			(uuid "745a2a7b-0862-472f-951b-2032cd68cda5")
-		)
-		(pin "14"
-			(uuid "2539e530-abbd-4998-a52c-0a5142ab127e")
-		)
-		(pin "15"
-			(uuid "a90c6383-ccc3-480a-8e41-473a6f0f40f8")
-		)
-		(pin "16"
-			(uuid "0c44b7d5-9853-4369-a87f-ef8973df720f")
-		)
-		(pin "17"
-			(uuid "2c8b61e9-2fc0-4a78-bbaa-0e65113eb945")
-		)
-		(pin "18"
-			(uuid "b8cbf553-9995-4cee-aa05-1082e90169ca")
-		)
-		(pin "19"
-			(uuid "dbcc96a2-2c33-4790-ac88-bc1a26d6d833")
-		)
-		(pin "20"
-			(uuid "e8bba1d3-dc50-4842-b662-b39271ee6340")
-		)
-		(pin "22"
-			(uuid "83166d47-596b-4c5c-aaf3-0c5d4e37e554")
-		)
-		(pin "1"
-			(uuid "980b04da-cc0f-4806-abf6-8a3d44742e29")
-		)
-		(pin "3"
-			(uuid "6103afac-2702-4f1e-ad07-b6e99a53cad6")
-		)
-		(pin "2"
-			(uuid "82e99680-9d3a-4459-a489-e1a9e3fbbac9")
-		)
-		(pin "21"
-			(uuid "4bccdfc2-7fb6-4a39-bdf2-a85476c794e8")
-		)
-		(pin "4"
-			(uuid "f34cf852-6347-4471-8977-b2148ab505ba")
-		)
-		(pin "24"
-			(uuid "7ae2cea3-6093-44c4-9b34-02ecf45f3869")
-		)
-		(pin "23"
-			(uuid "ef82ffb9-58b1-4959-9c5c-916613fc9660")
-		)
-		(pin "5"
-			(uuid "0f5aacec-7c87-4299-99c7-f543e2f94c1f")
-		)
-		(instances
-			(project "me_gizmo"
-				(path "/5ed15c8a-a75a-41fd-bd31-0cc03d775f55/6041856f-0485-4d67-a25f-c6f3f7a3f1cd/39d8a50c-debb-4b82-966b-43f84108d27d"
-					(reference "U3")
-					(unit 2)
 				)
 			)
 		)
@@ -10431,7 +10639,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "118"
+		(property "Value" "118Ω"
 			(at 180.34 117.475 0)
 			(effects
 				(font
@@ -10483,213 +10691,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Analog_Switch:ADG714")
-		(at 190.5 99.06 90)
-		(unit 5)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "f2abb690-f573-4861-b701-0a4179bca666")
-		(property "Reference" "U2"
-			(at 194.818 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "ADG714"
-			(at 192.278 96.012 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Package_SO:TSSOP-24_4.4x7.8mm_P0.65mm"
-			(at 190.5 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 190.5 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Analog serial controlled switch array"
-			(at 190.5 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Availability" ""
-			(at 190.5 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Check_prices" ""
-			(at 190.5 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description_1" ""
-			(at 190.5 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MF" ""
-			(at 190.5 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MP" ""
-			(at 190.5 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" ""
-			(at 190.5 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" ""
-			(at 190.5 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "SnapEDA_Link" ""
-			(at 190.5 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "6"
-			(uuid "015ab457-7c07-4f99-8e3f-6037e3f377be")
-		)
-		(pin "7"
-			(uuid "fbd658d6-39bf-4886-8948-59ec53118abd")
-		)
-		(pin "8"
-			(uuid "96df26a9-9a81-4448-8b80-a6a5b20b323e")
-		)
-		(pin "9"
-			(uuid "980dbc6a-3f3f-49a4-b23d-1646576eaaa5")
-		)
-		(pin "10"
-			(uuid "6b1ae7df-8d00-4a41-99f3-3eee5826a9c7")
-		)
-		(pin "11"
-			(uuid "9ccc3dbf-57d9-4134-b8e8-90a435ad352e")
-		)
-		(pin "12"
-			(uuid "38e17a5f-3ed9-4eaf-8770-55d9a3c52fa5")
-		)
-		(pin "13"
-			(uuid "d415e924-f59b-4680-bdb3-7635342899d9")
-		)
-		(pin "14"
-			(uuid "0c807e90-882a-4edf-beed-c831a4e450e0")
-		)
-		(pin "15"
-			(uuid "a90c6383-ccc3-480a-8e41-473a6f0f4101")
-		)
-		(pin "16"
-			(uuid "0c44b7d5-9853-4369-a87f-ef8973df7218")
-		)
-		(pin "17"
-			(uuid "2c8b61e9-2fc0-4a78-bbaa-0e65113eb94d")
-		)
-		(pin "18"
-			(uuid "b8cbf553-9995-4cee-aa05-1082e90169d2")
-		)
-		(pin "19"
-			(uuid "dbcc96a2-2c33-4790-ac88-bc1a26d6d83d")
-		)
-		(pin "20"
-			(uuid "e8bba1d3-dc50-4842-b662-b39271ee634a")
-		)
-		(pin "22"
-			(uuid "83166d47-596b-4c5c-aaf3-0c5d4e37e55d")
-		)
-		(pin "1"
-			(uuid "980b04da-cc0f-4806-abf6-8a3d44742e32")
-		)
-		(pin "3"
-			(uuid "6103afac-2702-4f1e-ad07-b6e99a53cadf")
-		)
-		(pin "2"
-			(uuid "82e99680-9d3a-4459-a489-e1a9e3fbbad2")
-		)
-		(pin "21"
-			(uuid "4bccdfc2-7fb6-4a39-bdf2-a85476c794f1")
-		)
-		(pin "4"
-			(uuid "f34cf852-6347-4471-8977-b2148ab505c3")
-		)
-		(pin "24"
-			(uuid "7ae2cea3-6093-44c4-9b34-02ecf45f3872")
-		)
-		(pin "23"
-			(uuid "ef82ffb9-58b1-4959-9c5c-916613fc9669")
-		)
-		(pin "5"
-			(uuid "0f5aacec-7c87-4299-99c7-f543e2f94c28")
-		)
-		(instances
-			(project "me_gizmo"
-				(path "/5ed15c8a-a75a-41fd-bd31-0cc03d775f55/6041856f-0485-4d67-a25f-c6f3f7a3f1cd/39d8a50c-debb-4b82-966b-43f84108d27d"
-					(reference "U2")
-					(unit 5)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
 		(at 189.23 115.57 180)
 		(unit 1)
@@ -10707,7 +10708,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "348"
+		(property "Value" "348Ω"
 			(at 194.31 114.3 0)
 			(effects
 				(font
