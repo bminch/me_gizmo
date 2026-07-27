@@ -2563,12 +2563,12 @@
 		(uuid "37c204ed-d839-4433-8f38-141b0874ad94")
 	)
 	(label "HB3+"
-		(at 154.94 134.62 270)
+		(at 215.9 102.87 90)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right bottom)
+			(justify left bottom)
 		)
 		(uuid "6ac92810-46a9-4f95-90cf-bdaeb5c4ab76")
 	)
@@ -2583,12 +2583,12 @@
 		(uuid "808778eb-7956-426b-91f7-d75229cfcce8")
 	)
 	(label "HB3-"
-		(at 215.9 102.87 90)
+		(at 154.94 134.62 270)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
 		(uuid "9a327d53-2b7d-4e52-80fe-f1e83de9d5c6")
 	)
