@@ -3,6 +3,7 @@
 
 SPISettings ADC_SPISettings(2000000, MSBFIRST, SPI_MODE0);
 SPISettings SWSettings(2000000, MSBFIRST, SPI_MODE1);
+SPISettings TEMPSettings(500000, MSBFIRST, SPI_MODE0);
 
 uint16_t dacA_val = 0x800, dacB_val = 0x800, dacC_val = 0x800, dacD_val = 0x800;
 uint8_t dacA_ena = 0, dacB_ena = 0, dacC_ena = 0, dacD_ena = 0;
@@ -15,13 +16,14 @@ void init_me_gizmo(void) {
     pinMode(DEBUG_TIMING_PIN, OUTPUT);
     digitalWrite(DEBUG_TIMING_PIN, LOW);
 
-    pinMode(LED_BUILTIN, OUTPUT);
-    digitalWrite(LED_BUILTIN, LOW);
+    pinMode(BUILTIN_LED, OUTPUT);
+    digitalWrite(BUILTIN_LED, LOW);
 
     init_dac_pre_init_adc();
     init_sw();
     init_adc();
     init_dac_post_init_adc();
+    init_temp();
 
     EEPROM.begin(EEPROM_LENGTH);
 }
@@ -540,4 +542,31 @@ void sw_reset(void) {
         sw_state[i] = 0;
     }
 
+}
+
+// Temperature sensor
+void init_temp(void) {
+    pinMode(TEMP_CS, OUTPUT);
+    digitalWrite(TEMP_CS, HIGH);
+
+    digitalWrite(TEMP_CS, LOW);
+    SPI.beginTransaction(TEMPSettings);
+
+    digitalWrite(TEMP_CS, LOW);
+    SPI.transfer16(0x0100);
+    
+    digitalWrite(TEMP_CS, HIGH);
+    SPI.endTransaction();
+}
+
+uint16_t get_temp(void) {
+    SPI.beginTransaction(TEMPSettings);
+    digitalWrite(TEMP_CS, LOW);
+
+    uint16_t temp = SPI.transfer16(TEMP_RESULT & 0xFFFF);
+    
+    digitalWrite(TEMP_CS, HIGH);
+    SPI.endTransaction();
+
+    return temp;
 }

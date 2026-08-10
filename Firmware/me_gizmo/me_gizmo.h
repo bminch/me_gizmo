@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 #include <EEPROM.h>
+// #include "sram_eeprom.h"
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -15,16 +16,22 @@
 #define FALSE               0
 #endif
 
+#define BUILTIN_LED         11
+
 #define EEPROM_LENGTH       1024
 
 #define DEBUG_TIMING_PIN    26
 
 // MCP3564R analog-to-digital converter (ADC) pin definitions
-#define ADC_IRQ_            20
 #define ADC_CSN             17
-#define ADC_SCK             18
-#define ADC_MISO            16
-#define ADC_MOSI            19
+#define ADC_IRQ_            18
+#define ADC_SCK             21
+#define ADC_MOSI            22
+#define ADC_MISO            24
+// #define ADC_IRQ_            20      // Prototype
+// #define ADC_SCK             18      // Prototype
+// #define ADC_MISO            16      // Prototype
+// #define ADC_MOSI            19      // Prototype
 
 // MCP3564R register address definitions (see Table 8-1 on p. 89 of the MCP3561/2/4R datasheet)
 #define ADC_ADCDATA         0   // Latest ADC conversion data output value (3 or 4 bytes depending on DATA_FORMAT[1:0])
@@ -71,13 +78,37 @@
 
 // MCP4922 digital-to-analog converter (DAC) pin definitions
 // Note: DAC shares SCK and MOSI lines with ADC
-#define DAC1_CSN            21
-#define DAC2_CSN            26
-#define DAC_LDAC            28
+#define DAC1_CSN            19
+#define DAC2_CSN            20
+#define DAC_LDAC            16
+// #define DAC1_CSN            21      // Prototype
+// #define DAC2_CSN            26      // Prototype
+// #define DAC_LDAC            28      // Prototype
 
-// ADG714 switch array pin definitions (shares SCK and MOSI with ADC and DAC)
+// ADG714 switch array pin definitions (shares SCK and MOSI)
 #define SW_SYNC             14
 #define SW_RESET            15
+
+// TMP126-Q1 temperature sensor pin definitions (shares SCK, MISO, and MOSI)
+#define TEMP_CS             25
+// #define TEMP_CS             13      // Prototype
+
+// TMP126-Q1 register address definitions, 1 byte each (see Table 8-3 on p. 25 of the TMP126-Q1 datasheet)
+#define TEMP_RESULT         0   // Read temperature result
+#define SLEW_RESULT         1   // Read slew rate result
+#define ALERT_STATUS        2   // Read alert status
+#define CONFIGURATION       3   // Read/write device configuration
+#define ALERT_ENABLE        4   // Read/write alert enable
+#define T_LOW_LIMIT         5   // Read/write temperature low limit
+#define T_HIGH_LIMIT        6   // Read/write temperature high limit
+#define HYSTERESIS          7   // Read/write hysteresis values for temperature limits
+#define SLEW_LIMIT          8   // Read/write slew rate limit
+#define UNIQUE_ID1          9   // Read Unique ID1
+#define UNIQUE_ID2          10  // Read Unique ID2
+#define UNIQUE_ID3          11  // Read Unique ID3
+#define DEVICE_ID           12  // Read Device ID
+#define RESERVED            13  // Reserved
+
 
 void init_me_gizmo(void);
 
@@ -141,5 +172,8 @@ void init_sw(void);
 uint8_t* sw_get_state(void);
 void sw_set_state(uint8_t value[]);
 void sw_reset(void);
+
+void init_temp(void);
+uint16_t get_temp(void);
 
 #endif

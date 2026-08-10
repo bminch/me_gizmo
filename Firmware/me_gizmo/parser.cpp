@@ -27,15 +27,18 @@ void ui_handler(char *args);
 void adc_handler(char *args);
 void dac_handler(char *args);
 void sw_handler(char *args);
+void tempQ_handler(char *args);
 void eeprom_handler(char *args);
 void idnQ_handler(char *args);
+
 
 DISPATCH_ENTRY_T root_table[] = {{ "UI", ui_handler }, 
                                  { "ADC", adc_handler }, 
                                  { "DAC", dac_handler }, 
+                                 { "SW", sw_handler },
+                                 { "TEMP", tempQ_handler },
                                  { "EEPROM", eeprom_handler }, 
-                                 { "*IDN?", idnQ_handler },
-                                 { "SW", sw_handler }};
+                                 { "*IDN?", idnQ_handler }};
 
 #define ROOT_TABLE_ENTRIES      sizeof(root_table) / sizeof(DISPATCH_ENTRY_T)
 
@@ -490,13 +493,17 @@ void led_handler(char *args) {
     token = str_tok_r(args, ":, ", &remainder);
     if (token) {
         if (str_cmp(token, "ON") == 0) {
-            digitalWrite(LED_BUILTIN, HIGH);
+            digitalWrite(BUILTIN_LED, HIGH);
         } else if (str_cmp(token, "OFF") == 0) {
-            digitalWrite(LED_BUILTIN, LOW);
+            digitalWrite(BUILTIN_LED, LOW);
         } else if (str_cmp(token, "TOGGLE") == 0) {
-            digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
-        } else if (str2hex(token, &val) == 0) {
-            digitalWrite(LED_BUILTIN, val ? HIGH : LOW);
+            digitalWrite(BUILTIN_LED, !digitalRead(BUILTIN_LED));
+        } else if (str2num(token, &val) == 0) {
+            if (val == 1 || val == 0) {
+                digitalWrite(BUILTIN_LED, val ? HIGH : LOW);
+            }
+            else:
+                digitalWrite(val, !digitalRead(val))
         }
     }
 }
@@ -504,7 +511,7 @@ void led_handler(char *args) {
 void ledQ_handler(char *args) {
     char str[5];
 
-    hex2str_alt(digitalRead(LED_BUILTIN), str);
+    hex2str_alt(digitalRead(BUILTIN_LED), str);
     Serial.print(str);
     Serial.print("\r\n");
 }
@@ -555,7 +562,7 @@ void blink_start_handler(char *args) {
     if (parser_task)
         return;
 
-    digitalWrite(LED_BUILTIN, HIGH);
+    digitalWrite(BUILTIN_LED, HIGH);
     blink_time = millis();
     parser_task = blink_task;
 }
@@ -564,7 +571,7 @@ void blink_stop_handler(char *args) {
     if (parser_task != blink_task)
         return;
 
-    digitalWrite(LED_BUILTIN, LOW);
+    digitalWrite(BUILTIN_LED, LOW);
     parser_task = (STATE_HANDLER_T)NULL;
 }
 
@@ -573,7 +580,7 @@ void blink_task(void) {
 
     t = millis();
     if (it_is_time(t, blink_time, blink_interval)) {
-        digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
+        digitalWrite(BUILTIN_LED, !digitalRead(BUILTIN_LED));
         blink_time = t;
     }
 }
@@ -1501,6 +1508,15 @@ void sw_stateQ_handler(char *args) {
 
 void sw_reset_handler(char *args) {
     sw_reset();
+}
+
+// Temperature sensor comands
+void tempQ_handler(char *args) {
+    char str[5];
+
+    hex2str_alt(get_temp(), str);
+    Serial.print(str);
+    Serial.print("\r\n");
 }
 
 // EEPROM commands
